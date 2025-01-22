@@ -64,6 +64,8 @@ project-name/
 - **Leen Seydoun** - BCIT Student that loves cats! Has one cat at home
 
 
+- **Veronica Sheng** - BCIT CST Student with a passion for creating inclusive applications. Fun fact: Loves traveling!!!! 
+
 ---
 
 ## Acknowledgments
