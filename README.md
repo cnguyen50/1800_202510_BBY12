@@ -62,7 +62,7 @@ project-name/
 - **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 - Calvin - BCIT CST Student that loves food.
 
-- **Veronica Sheng** - BCIT CST Student with a passion for creating inclusive applications. Fun fact: Loves traveling. 
+- **Veronica Sheng** - BCIT CST Student with a passion for creating inclusive applications. Fun fact: Loves traveling!!!! 
 
 ---
 
