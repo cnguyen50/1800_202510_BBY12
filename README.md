@@ -58,9 +58,9 @@ project-name/
 ---
 
 ## Contributors
-- **Your Name** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
-- Calvin - BCIT CST Student that loves food!!!!!!!
+- **Calvin Nguyen** - BCIT CST Student that loves food!!!!!!!
+- **Leen Seydoun** - BCIT Student that loves cats! Has one cat at home
+- **Veronica Sheng** - BCIT CST Student with a passion for creating inclusive applications. Fun fact: Loves traveling!!!! 
 
 ---
 
