@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .bg-info {
     background-color: blue;
+}
+
+body {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url('../images/10_Minuten_Aktivierung_für_Senioren.jpg');
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
 }
