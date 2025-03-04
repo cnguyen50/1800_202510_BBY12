@@ -15,4 +15,4 @@ function loadSkeleton() {
     });
 }
 
-loadSkeleton();  //invoke the function
+loadSkeleton();  //invoke the functionde
