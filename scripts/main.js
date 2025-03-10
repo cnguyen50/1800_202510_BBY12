@@ -1,7 +1,7 @@
-function writeDoctors() {
-    var doctorsRef = db.collection("doctors");
+// function writeDoctors() {
+//     var doctorsRef = db.collection("doctors");
 
 
 
-    
-}
+
+// }
