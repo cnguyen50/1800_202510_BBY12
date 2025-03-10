@@ -1,38 +1,30 @@
-// function readDoctorInfo() {
-//     db.collection
-// }
-function displayDoctorInfo() {
-    let params = new URLSearchParams(window.location.search); // Fix URL parsing
-    let docID = params.get("docID"); // Get the doctor ID from the URL
+function displayAllDoctors() {
+    let cardTemplate = document.getElementById("doctorCardTemplate"); // Get the card template
 
-    console.log("Doctor ID:", docID); // Debugging: check if docID is retrieved correctly
+    db.collection("doctors").get().then(allDoctors => {
+        allDoctors.forEach(doc => {
+            let doctorData = doc.data();
+            let newCard = cardTemplate.content.cloneNode(true); 
 
-    if (docID) {
-        db.collection("doctors")
-            .doc(docID)
-            .get()
-            .then(doc => {
-                if (doc.exists) {
-                    let doctorData = doc.data();
-                    document.getElementById("doctorName").innerText = doctorData.name;
-                    document.getElementById("doctorSpecialization").innerText = `Specialization: ${doctorData.specialization}`;
-                    document.getElementById("doctorOffice").innerText = `Office: ${doctorData.office}`;
-                    document.getElementById("doctorAddress").innerText = `Address: ${doctorData.address}`;
-                    document.getElementById("doctorEmail").innerText = doctorData.email;
-                    document.getElementById("doctorEmail").href = `mailto:${doctorData.email}`;
-                } else {
-                    console.log("No such doctor found!");
-                }
-            })
-            .catch(error => {
-                console.error("Error fetching doctor:", error);
-            });
-    } else {
-        console.error("No doctor ID found in URL. Make sure the link includes ?docID=xyz123");
-    }
+            // Populate card with doctor data
+            newCard.querySelector("#doctor-name").innerText = doctorData.name;
+            newCard.querySelector("#doctor-specialization").innerText = `Specialization: ${doctorData.specialization}`;
+            newCard.querySelector("#doctor-office").innerText = `Office: ${doctorData.office}`;
+            newCard.querySelector("#doctor-address").innerText = `Address: ${doctorData.address}`;
+            newCard.querySelector("#doctor-email").innerText = doctorData.email;
+            newCard.querySelector("#doctor-email").href = `mailto:${doctorData.email}`;
+
+            // Append card to doctors-list
+            document.getElementById("doctors-list").appendChild(newCard);
+        });
+    }).catch(error => {
+        console.error("Error fetching doctors:", error);
+    });
 }
 
-displayDoctorInfo();
+// Call the function to display all doctors
+displayAllDoctors();
+
 
 
 

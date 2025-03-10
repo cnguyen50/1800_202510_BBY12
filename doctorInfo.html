@@ -8,83 +8,73 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!------------------------------------------>
-    <!-- Bootstrap Library CSS JS CDN go here -->
-    <!------------------------------------------>
+    <!-- Bootstrap Library CSS & JS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 
-    <!-------------------------------------------------------->
-    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-    <!-------------------------------------------------------->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
-        <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" /> -->
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-
-    <!-------------------------------------------->
-    <!-- Other libraries and styles of your own -->
-    <!-------------------------------------------->
+    <!-- Firebase Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    
+    <!-- Other Libraries -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
-
 </head>
 
 <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-    <!-- Stuff for body goes here -->
+    <!-- Doctor Card Template for Listing -->
     <template id="doctorCardTemplate">
-        <div class="card py-2 mx-2" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title" id="doctor-name">Doctor's Name</h5>
-                <p class="card-specialization" id="doctor-specialization">Specialization: Placeholder</p>
-                <p class="card-office" id="doctor-office">Office: Placeholder</p>
-                <p class="card-address" id="doctor-address">Address: Placeholder</p>
-                <a href="mailto:" class="btn btn-primary card-href" id="doctor-email">Email</a>
+        <div class="col-md-4">
+            <div class="card py-2 mx-2">
+                <div class="card-body">
+                    <h5 class="card-title" id="doctor-name">Doctor's Name</h5>
+                    <p id="doctor-specialization">Specialization: Placeholder</p>
+                    <p id="doctor-office">Office: Placeholder</p>
+                    <p id="doctor-address">Address: Placeholder</p>
+                    <a href="#" id="doctor-email">Email</a>
+                </div>
             </div>
         </div>
     </template>
-
+    
+    <!-- Navigation Bar -->
     <nav id="navbarPlaceholder"></nav>
 
-    <h1>Doctor's Info</h1>
-
     <div class="container mt-4">
-        <h1>List of Doctors</h1>
-        <div id="doctors-list"></div>
-        <h2 id="doctor-name"></h2>
-        <p id="doctor-specialization"></p>
-        <p id="doctor-office"></p>
-        <p id="doctor-address"></p>
-        <a id="doctor-email"></a>
+        <h1>Doctor's Information</h1>
 
-        <div id="info-goes-here"></div>
+        <!-- Section for Single Doctor Details (if docID exists) -->
+        <div id="single-doctor-info" class="my-4">
+            <h2 id="doctor-name"></h2>
+            <p id="doctor-specialization"></p>
+            <p id="doctor-office"></p>
+            <p id="doctor-address"></p>
+            <a id="doctor-email"></a>
+        </div>
+
+        <!-- Section for Listing All Doctors (if no docID is provided) -->
+        <h2 class="mt-5">List of Doctors</h2>
+        <div id="doctors-list" class="row"></div>
+        
     </div>
 
 
+    <!-- Footer -->
     <footer id="footerPlaceholder"></footer>
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-
-    <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
+    <!-- JavaScript Scripts -->
     <script src="./scripts/firebaseAPI_Team12.js"></script>
     <script src="./scripts/script.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/doctorInfo.js"></script>
-    <script src="./scripts/main.js"></script>
-
 </body>
 
 </html>
