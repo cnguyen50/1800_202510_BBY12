@@ -1,36 +1,3 @@
-function displayDoctorInfo() {
-    let params = new URL(window.location.href);
-    let docID = params.searchParams.get("docID");
-
-    if (docID) {
-        db.collection("doctors").doc(docID)
-            .onSnapshot(doc => { 
-                if (doc.exists) {
-                    let doctorData = doc.data();
-
-                    document.getElementById("doctor-name").innerText = doctorData.name;
-                    document.getElementById("doctor-specialization").innerText = doctorData.specialization;
-                    document.getElementById("doctor-office").innerText = doctorData.office;
-                    document.getElementById("doctor-address").innerText = doctorData.address;
-                    document.getElementById("doctor-email").innerText = doctorData.email;
-                    document.getElementById("doctor-email").href = `mailto:${doctorData.email}`;
-                } else {
-                    console.log("No doctor found!");
-                }
-            }, (error) => {
-                console.error("Error fetching doctor:", error);
-            });
-    } else {
-        console.log("No doctor ID found in URL.");
-    }
-}
-
-displayDoctorInfo();
-
-
-    
-
-
 function readEmergency(GT2LNyBtUpTutpUeA5NO) {
     db.collection("emergency").doc(GT2LNyBtUpTutpUeA5NO)      
         .onSnapshot(GT2LNyBtUpTutpUeA5NODoc => {                                                       

@@ -41,11 +41,33 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
+    <template id="doctorCardTemplate">
+        <div class="card py-2 mx-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title" id="doctor-name">Doctor's Name</h5>
+                <p class="card-specialization" id="doctor-specialization">Specialization: Placeholder</p>
+                <p class="card-office" id="doctor-office">Office: Placeholder</p>
+                <p class="card-address" id="doctor-address">Address: Placeholder</p>
+                <a href="mailto:" class="btn btn-primary card-href" id="doctor-email">Email</a>
+            </div>
+        </div>
+    </template>
 
     <nav id="navbarPlaceholder"></nav>
 
     <h1>Doctor's Info</h1>
 
+    <div class="container mt-4">
+        <h1>List of Doctors</h1>
+        <div id="doctors-list"></div>
+        <h2 id="doctor-name"></h2>
+        <p id="doctor-specialization"></p>
+        <p id="doctor-office"></p>
+        <p id="doctor-address"></p>
+        <a id="doctor-email"></a>
+
+        <div id="info-goes-here"></div>
+    </div>
 
 
     <footer id="footerPlaceholder"></footer>
@@ -61,6 +83,7 @@
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/doctorInfo.js"></script>
+    <script src="./scripts/main.js"></script>
 
 </body>
 
