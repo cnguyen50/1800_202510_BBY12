@@ -44,11 +44,28 @@
 
     <nav id="navbarPlaceholder"></nav>
 
-    <h1>Emergency Contacts</h1>
-
-    <div>
-        <p><span id="info-goes-here"></span></p>
+    <div class="container mt-4">
+        <h1>Emergency Contacts</h1>
+    
+        <!-- Section for Listing All Emergency Contacts -->
+        <h2 class="mt-5">List of Emergency Contacts</h2>
+        <div id="contacts-list" class="row"></div> <!-- Cards will go here -->
     </div>
+
+    <!-- Hidden Card Template (this will be cloned for each contact) -->
+    <template id="contactCardTemplate">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title" id="contact-name"></h5>
+                    <p class="card-text" id="contact-relationship"></p>
+                    <p class="card-text" id="contact-phone"></p>
+                    <p class="card-text" id="contact-address"></p>
+                    <a href="#" id="contact-email" class="btn btn-primary">Email</a>
+                </div>
+            </div>
+        </div>
+    </template>
 
     <footer id="footerPlaceholder"></footer>
 
@@ -62,9 +79,7 @@
     <script src="./scripts/script.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/main.js"></script>
     <script src="./scripts/emergency.js"></script>
-
 </body>
 
 </html>
