@@ -15,17 +15,17 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!-------------------------------------------------------->
     <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
     <!-------------------------------------------------------->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
-        <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script> -->
 
     <!-------------------------------------------->
@@ -42,9 +42,31 @@
     <!------------------------------>
     <!-- Stuff for body goes here -->
 
+    <!-- Doctor Card Template for Listing -->
+    <template id="medicationCardTemplate">
+        <div class="col-md-4">
+            <div class="card py-2 mx-2">
+                <div class="card-body">
+                    <h5 class="card-title" id="medication-name">Medication</h5>
+                    <p id="medication-dose">Dosage: Placeholder</p>
+                    <p id="medication-instructions">Instructions: Placeholder</p>
+                </div>
+            </div>
+        </div>
+    </template>
+
     <nav id="navbarPlaceholder"></nav>
 
     <h1>Medication</h1>
+    <div id="single-medication" class="my-4">
+        <h2 id="medication-name"></h2>
+        <p id="medication-dose"></p>
+        <p id="medication-instructions"></p>
+    </div>
+
+    <!-- Section for Listing All Doctors (if no docID is provided) -->
+    <h2 class="mt-5">List of Medications</h2>
+    <div id="medication-list" class="row"></div>
 
     <footer id="footerPlaceholder"></footer>
 
@@ -58,6 +80,7 @@
     <script src="./scripts/script.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/medication.js"></script>
 
 </body>
 
