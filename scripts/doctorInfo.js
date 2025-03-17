@@ -4,6 +4,7 @@ function displayAllDoctors() {
     db.collection("doctors").get().then(allDoctors => {
         allDoctors.forEach(doc => {
             let doctorData = doc.data();
+            let doctorID = doc.id;
             let newCard = cardTemplate.content.cloneNode(true); 
 
             // Populate card with doctor data
@@ -20,7 +21,7 @@ function displayAllDoctors() {
             editButton.innerText = "Edit";
             editButton.onclick = function() {
                 localStorage.setItem("selectedDoctorID", doctorID); // Store doctorID
-                window.location.href = "editDoctorsInfo.html"; // Redirect to edit page
+                window.location.href = "editDoctorInfo.html"; // Redirect to edit page
             };
 
             // Append button
