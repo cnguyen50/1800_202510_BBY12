@@ -41,14 +41,59 @@
 </head>
 
 <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-    <!-- Stuff for body goes here -->
-
+    <!-- Nav Bar -->
     <nav id="navbarPlaceholder"></nav>
 
-    <h1>Welcome to Landing Page!</h1>
+    <div class="container mt-4">
+        <!-- Welcome Message -->
+        <div class="welcome text-center p-4 shadow rounded">
+            <h1>Welcome to Our Medical Center</h1>
+            <p>Your health is our priority.</p>
+        </div>
+
+        <!-- Appointment Section -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="appointment p-4 bg-info text-white shadow rounded text-center">
+                    <h2>Next Appointment</h2>
+                    <button class="btn btn-light mt-2">Request a Call</button>
+                    <a href="appointment.html" class="btn btn-primary mt-2">Edit</a>
+                </div>
+            </div>
+            
+            <!-- Medical Information -->
+            <div class="col-md-6">
+                <div class="medical-info p-4 bg-warning shadow rounded">
+                    <h2>Medical History</h2>
+                    <div class="scrollable-content" style="max-height: 150px; overflow-y: auto;">
+                        <p>Ensure you follow up on vaccinations and preventive screenings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doctor Info -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="doctor-info p-4 bg-danger text-white shadow rounded text-center">
+                    <h2>Doctors</h2>
+                    <p>Next Appointment: <span id="next-doctor"></span></p>
+                    <a href="doctorInfo.html" class="btn btn-light">View More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Contact -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="doctor-info p-4 bg-danger text-white shadow rounded text-center">
+                    <h2>Emergency Contact</h2>
+                    <p>Relationship: <span id="next-doctor"></span></p>
+                    <a href="emergency.html" class="btn btn-primary mt-2">Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer id="footerPlaceholder"></footer>
 
