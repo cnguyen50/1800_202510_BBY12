@@ -1,25 +1,94 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.bg-info {
-    background-color: blue;
+:root {
+    --text-clr: #ebead7;
+    --accent-clr: #546ca4;
+    --line-clr: #a4b4c2;
 }
 
 body {
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-image: url('../images/10_Minuten_Aktivierung_für_Senioren.jpg');
     font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
     overflow-x: hidden;
+    background-color: #f4f4f4;
+    margin: var(--lwc-spacingNone, 0px);
+    padding: var(--lwc-spacingNone, 0px);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.6); 
-    z-index: -1;
+nav {
+    background: #f4f4f4;
+    padding: 15px;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+    flex-grow: 1;
+    padding: 20px 0;
+}
+
+.welcome {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.scrollable-content {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background: #ffe5d9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 150px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.scrollable-content::after {
+    content: '\2193'; /* Downward arrow */
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+.right-section {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.appointment, .doctor-info, .emergency-contact {
+    background: #d1e7ff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+footer {
+    background: #007bff;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
 }
