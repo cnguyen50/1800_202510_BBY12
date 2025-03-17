@@ -10,7 +10,13 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(doc => {
             if (doc.exists) {
                 let doctorData = doc.data();
-                console.log(doctorData);
+
+                // Set default values (placeholders) for each input field
+                document.getElementById("doctor-name").value = doctorData.name;
+                document.getElementById("doctor-specialization").value = doctorData.specialization;
+                document.getElementById("doctor-office").value = doctorData.office;
+                document.getElementById("doctor-address").value = doctorData.address;
+                document.getElementById("doctor-email").value = doctorData.email;
             } else {
                 console.error("Doctor not found!");
             }
