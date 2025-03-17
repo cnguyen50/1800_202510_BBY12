@@ -14,6 +14,18 @@ function displayAllDoctors() {
             newCard.querySelector("#doctor-email").innerText = doctorData.email;
             newCard.querySelector("#doctor-email").href = `mailto:${doctorData.email}`;
 
+            // Create Edit button
+            let editButton = document.createElement("button");
+            editButton.classList.add("btn", "btn-primary", "mt-2");
+            editButton.innerText = "Edit";
+            editButton.onclick = function() {
+                localStorage.setItem("selectedDoctorID", doctorID); // Store doctorID
+                window.location.href = "editDoctorsInfo.html"; // Redirect to edit page
+            };
+
+            // Append button
+            newCard.querySelector(".card-body").appendChild(editButton); 
+
             // Append card to doctors-list
             document.getElementById("doctors-list").appendChild(newCard);
         });
@@ -24,9 +36,6 @@ function displayAllDoctors() {
 
 // Call the function to display all doctors
 displayAllDoctors();
-
-
-
 
 function test() {
     console.log("testing inside from doctorsInfo");
