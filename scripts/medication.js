@@ -6,12 +6,12 @@ function displayAllMedications() {
             let medicationData = doc.data();
             let newCard = cardTemplate.content.cloneNode(true); 
 
-            // Populate card with doctor data
+            // Populate card with medication data
             newCard.querySelector("#medication-name").innerText = `Name: ${medicationData.name}`;
             newCard.querySelector("#medication-dose").innerText = `Dosage: ${medicationData.dose}`;
             newCard.querySelector("#medication-instructions").innerText = `Instructions: ${medicationData.instructions}`;
 
-            // Append card to doctors-list
+            // Append card to medication-list
             document.getElementById("medication-list").appendChild(newCard);
         });
     }).catch(error => {
@@ -19,7 +19,7 @@ function displayAllMedications() {
     });
 }
 
-// Call the function to display all doctors
+// Call the function to display all medications
 displayAllMedications();
 
 
