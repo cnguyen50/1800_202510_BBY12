@@ -7,6 +7,7 @@ function displayAllEmergencyContacts() {
         // Loop through each document (contact)
         allEmergency.forEach(doc => {
             let emergencyData = doc.data();
+            let emergencyID = doc.id;
             let newCard = cardTemplate.content.cloneNode(true); // Clone the template
 
             // Populate the card with the contact data
@@ -16,6 +17,18 @@ function displayAllEmergencyContacts() {
             newCard.querySelector("#contact-address").innerText = `Address: ${emergencyData.Address}`;
             newCard.querySelector("#contact-email").innerText = `Email: ${emergencyData.Email}`;
             newCard.querySelector("#contact-email").href = `mailto:${emergencyData.Email}`; // Make email clickable
+            
+            // Create Edit button
+            let editButton = document.createElement("button");
+            editButton.classList.add("btn", "btn-primary", "mt-2");
+            editButton.innerText = "Edit";
+            editButton.onclick = function() {
+                localStorage.setItem("selectedEmergencyID", emergencyID); // Store emergencyID
+                window.location.href = "editEmergency.html"; // Redirect to edit page
+            };
+
+            // Append button
+            newCard.querySelector(".card-body").appendChild(editButton); 
 
             // Append the new card to the contacts list
             document.getElementById("contacts-list").appendChild(newCard);
@@ -31,4 +44,5 @@ displayAllEmergencyContacts();
 function test() {
     console.log("testing inside from emergency");
 }
+
 test();
