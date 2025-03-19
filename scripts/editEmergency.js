@@ -1,67 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     let emergencyID = localStorage.getItem("selectedEmergencyID");
-
-    if (!emergencyID) {
-        console.error("No contacts selected!");
-        return;
-    }
-
-    console.log("Fetching emergency contact with ID:", emergencyID);
-
-    db.collection("emergency")
-        .doc(emergencyID)
-        .get()
-        .then((doc) => {
-            if (doc.exists) {
-                let emergencyData = doc.data();
-                console.log("Emergency contact data:", emergencyData);
-
-                // Check if the "contact-name" element exists
-                let nameInput = document.getElementById("contact-name");
-                if (nameInput) {
-                    nameInput.value = emergencyData.Name || ""; // Set the value
-                } else {
-                    console.error("Element with ID 'contact-name' not found!");
-                }
-
-                // Repeat for other elements
-                let relationshipInput = document.getElementById("contact-relationship");
-                if (relationshipInput) {
-                    relationshipInput.value = emergencyData.Relationship || "";
-                } else {
-                    console.error("Element with ID 'contact-relationship' not found!");
-                }
-
-                let phoneInput = document.getElementById("contact-phone");
-                if (phoneInput) {
-                    phoneInput.value = emergencyData["Phone Number"] || "";
-                } else {
-                    console.error("Element with ID 'contact-phone' not found!");
-                }
-
-                let addressInput = document.getElementById("contact-address");
-                if (addressInput) {
-                    addressInput.value = emergencyData.Address || "";
-                } else {
-                    console.error("Element with ID 'contact-address' not found!");
-                }
-
-                let emailInput = document.getElementById("contact-email");
-                if (emailInput) {
-                    emailInput.value = emergencyData.Email || "";
-                } else {
-                    console.error("Element with ID 'contact-email' not found!");
-                }
-            } else {
-                console.error("Emergency contact not found!");
-            }
-        })
-        .catch((error) => console.error("Error fetching emergency contact:", error));
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    let emergencyID = localStorage.getItem("selectedEmergencyID");
-
     if (!emergencyID) {
         console.error("No contacts selected!");
         return;
@@ -70,17 +8,26 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log("Fetching emergency contact with ID:", emergencyID);
 
     db.collection("emergency").doc(emergencyID).get()
-        .then(doc => {
+        .then((doc) => {
             if (doc.exists) {
                 let emergencyData = doc.data();
                 console.log("Emergency contact data:", emergencyData);
 
-                // Set default values (placeholders) for each input field
-                document.getElementById("contact-name").value = emergencyData.Name || "";
-                document.getElementById("contact-relationship").value = emergencyData.Relationship || "";
-                document.getElementById("contact-phone").value = emergencyData["Phone Number"] || "";
-                document.getElementById("contact-address").value = emergencyData.Address || "";
-                document.getElementById("contact-email").value = emergencyData.Email || "";
+                // Populate fields if they exist
+                [
+                    { id: "contact-name", key: "Name" },
+                    { id: "contact-relationship", key: "Relationship" },
+                    { id: "contact-phone", key: "Phone Number" },
+                    { id: "contact-address", key: "Address" },
+                    { id: "contact-email", key: "Email" }
+                ].forEach(({ id, key }) => {
+                    let input = document.getElementById(id);
+                    if (input) {
+                        input.value = emergencyData[key] || "";
+                    } else {
+                        console.error(`Element with ID '${id}' not found!`);
+                    }
+                });
             } else {
                 console.error("Emergency contact not found!");
             }
@@ -88,36 +35,33 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error("Error fetching emergency contact:", error));
 });
 
-// Function to save the edited doctor information to database
+// Function to save the edited emergency contact information
 function saveEmergencyInfo() {
-    let contactName = document.getElementById("contact-name").value;
-    let contactRelationship = document.getElementById("contact-relationship").value;
-    let contactPhone = document.getElementById("contact-phone").value;
-    let contactAddress = document.getElementById("contact-address").value;
-    let contactEmail = document.getElementById("contact-email").value;
+    let emergencyID = localStorage.getItem("selectedEmergencyID");
+    if (!emergencyID) {
+        console.error("No emergency contact selected for update!");
+        return;
+    }
 
-    console.log(contactName, contactRelationship, contactPhone, contactAddress, contactEmail);
+    let contactData = {
+        Name: document.getElementById("contact-name").value,
+        Relationship: document.getElementById("contact-relationship").value,
+        "Phone Number": document.getElementById("contact-phone").value,
+        Address: document.getElementById("contact-address").value,
+        Email: document.getElementById("contact-email").value,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
 
-    // Check if the user is authenticated
+    console.log("Updating emergency contact:", contactData);
+
     var user = firebase.auth().currentUser;
     if (user) {
-        // Get the document reference for the selected doctor
-        var emergencyRef = db.collection("emergency").doc(emergencyID);
-
-        // Update the doctor document with the new data
-        emergencyRef.update({
-            name: contactName,
-            relationship: contactRelationship,
-            Phone: contactPhone,
-            address: contactAddress,
-            email: contactEmail,
-            updatedAt: firebase.firestore.FieldValue.serverTimestamp() 
-        }).then(() => {
-            console.log("Emergency contact information updated successfully!");
-            // window.location.href = "";
-        }).catch(error => {
-            console.error("Error updating emergency contact information: ", error);
-        });
+        db.collection("emergency").doc(emergencyID).update(contactData)
+            .then(() => {
+                console.log("Emergency contact information updated successfully!");
+                // Optionally redirect or give feedback to the user
+            })
+            .catch(error => console.error("Error updating emergency contact information: ", error));
     } else {
         console.log("No user is signed in");
         window.location.href = 'login.html';
@@ -125,4 +69,9 @@ function saveEmergencyInfo() {
 }
 
 // Add event listener to save button
-document.getElementById("save-button").addEventListener("click", saveEmergencyInfo);
+const saveButton = document.getElementById("save-button");
+if (saveButton) {
+    saveButton.addEventListener("click", saveEmergencyInfo);
+} else {
+    console.error("Save button not found!");
+}
