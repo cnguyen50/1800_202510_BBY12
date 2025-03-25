@@ -44,6 +44,31 @@
     <!-- Nav Bar -->
     <nav id="navbarPlaceholder"></nav>
 
+    <!--TEMPLATE-->
+    <template id="contactCardTemplate">
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="card-title">
+                        <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne" id="contact-name">
+                            Collapsible Group Item #1
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <p class="card-text" id="contact-relationship"></p>
+                        <p class="card-text" id="contact-phone"></p>
+                        <p class="card-text" id="contact-address"></p>
+                        <a href="#" id="contact-email" class="btn btn-primary">Email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
     <div class="container mt-4">
         <!-- Welcome Message -->
         <div class="welcome text-center p-4 shadow rounded">
@@ -88,8 +113,9 @@
             <div class="col-md-12">
                 <div class="doctor-info p-4 bg-danger text-white shadow rounded text-center">
                     <h2>Emergency Contact</h2>
-                    <p>Relationship: <span id="next-doctor"></span></p>
-                    <a href="emergency.html" class="btn btn-primary mt-2">Edit</a>
+                    <!-- <p>Relationship: <span id="next-doctor"></span></p>
+                    <a href="emergency.html" class="btn btn-primary mt-2">Edit</a> -->
+                    <div id="contacts-list" class="row"></div>
                 </div>
             </div>
         </div>
@@ -107,6 +133,7 @@
     <script src="./scripts/script.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/emergency.js"></script>
 
 </body>
 
