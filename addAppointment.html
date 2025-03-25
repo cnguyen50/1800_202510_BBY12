@@ -2,12 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
+    <title>Emergency Contacts</title>
     <meta name="comp1800 template" content="My 1800 App">
 
-    <!------------------------>
-    <!-- Required meta tags -->
-    <!------------------------>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,7 +25,7 @@
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
-        <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" /> -->
+        <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />-->
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
     <!-------------------------------------------->
@@ -37,66 +34,36 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
 
-
 </head>
 
 <body>
-    <!-- Nav Bar -->
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+    <!-- Stuff for body goes here -->
+
     <nav id="navbarPlaceholder"></nav>
 
     <div class="container mt-4">
-        <!-- Welcome Message -->
-        <div class="welcome text-center p-4 shadow rounded">
-            <h1>Welcome to Our Medical Center</h1>
-            <p>Your health is our priority.</p>
-        </div>
-
-        <!-- Appointment Section -->
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <div class="appointment p-4 bg-info text-white shadow rounded text-center">
-                    <h2>Next Appointment</h2>
-                    <a href="appointment.html" class="btn btn-primary mt-2">View More</a>
-                    <a href="editAppointment.html" class="btn btn-primary mt-2">Edit</a>
-                </div>
+        <h1>Add New Appointment</h1>
+        <form id="add-appointment-form">
+            <div class="mb-3">
+                <label for="doctor-name" class="form-label">Doctor</label>
+                <select id="doctor-name" class="form-control"></select>
             </div>
-            
-            <!-- Medical Information -->
-            <div class="col-md-6">
-                <div class="medical-info p-4 bg-warning shadow rounded">
-                    <h2>Medical History</h2>
-                    <div class="scrollable-content" style="max-height: 150px; overflow-y: auto;">
-                        <p>Ensure you follow up on vaccinations and preventive screenings.</p>
-                    </div>
-                </div>
+            <div class="mb-3">
+                <label for="appointment-date" class="form-label">Date</label>
+                <input type="date" id="appointment-date" class="form-control">
             </div>
-        </div>
-
-        <!-- Doctor Info -->
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <div class="doctor-info p-4 bg-danger text-white shadow rounded text-center">
-                    <h2>Doctors</h2>
-                    <p>Next Appointment: <span id="next-doctor"></span></p>
-                    <a href="doctorInfo.html" class="btn btn-light">View More</a>
-                </div>
+            <div class="mb-3">
+                <label for="appointment-time" class="form-label">Time</label>
+                <input type="time" id="appointment-time" class="form-control">
             </div>
-        </div>
-
-        <!-- Emergency Contact -->
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <div class="doctor-info p-4 bg-danger text-white shadow rounded text-center">
-                    <h2>Emergency Contact</h2>
-                    <p>Relationship: <span id="next-doctor"></span></p>
-                    <a href="emergency.html" class="btn btn-primary mt-2">Edit</a>
-                </div>
-            </div>
-        </div>
+            <button type="button" id="add-button" class="btn btn-primary">Add Appointment</button>
+        </form>
     </div>
 
     <footer id="footerPlaceholder"></footer>
-
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
@@ -107,7 +74,7 @@
     <script src="./scripts/script.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
-
+    <script src="./scripts/addAppointment.js"></script>
 </body>
 
 </html>
