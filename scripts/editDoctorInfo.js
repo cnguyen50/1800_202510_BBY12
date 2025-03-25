@@ -3,10 +3,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (!doctorID) {
         console.error("No doctor selected!");
-        return; 
+        return;
     }
 
     // Function to save the edited doctor information to database
+    // Based off of 1800 demo#10 review.js
     function saveDoctorInfo() {
         let doctorName = document.getElementById("doctor-name").value;
         let doctorSpecialization = document.getElementById("doctor-specialization").value;
@@ -45,6 +46,33 @@ document.addEventListener("DOMContentLoaded", function() {
     // Add event listener to save button
     document.getElementById("save-button").addEventListener("click", saveDoctorInfo);
 
+    
+    // Function to delete the doctor from Firestore
+    function deleteDoctor() {
+        let doctorID = localStorage.getItem("selectedDoctorID");
+
+        console.log("testing outside .then delete doc")
+        //if  db colecction callback function isnt running correctly
+        //read doctor id from storage
+        console.log("doctorID before deletion:", doctorID);
+        console.log(localStorage.getItem("selectedDoctorID"));
+
+
+        if (confirm("Are you sure you want to delete?")) {
+            db.collection("doctors").doc(doctorID).delete().then(() => {
+                alert("Doctor successfully deleted!");
+                console.log("after clicking pop up")
+                localStorage.removeItem("selectedDoctorID");
+                // window.location.href = "doctorInfo.html";
+            }).catch(error => {
+                console.error("Error deleting doctor:", error);
+            });
+        }
+    }
+
+    // Add event listener to delete button
+    document.getElementById("delete-button").addEventListener("click", deleteDoctor);
+    
     // Renders the form with existing doctor data on page load
     db.collection("doctors").doc(doctorID).get()
         .then(doc => {

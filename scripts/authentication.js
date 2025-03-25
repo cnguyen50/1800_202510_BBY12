@@ -13,7 +13,7 @@ var uiConfig = {
                     school: "BCIT"
                 }).then(function () {
                     console.log("New user added to Firestore");
-                    window.location.assign("main.html");
+                    window.location.assign("index.html");
                 }).catch(function (error) {
                     console.log("Error adding new user: " + error);
                 });
@@ -27,7 +27,7 @@ var uiConfig = {
         }
     },
     signInFlow: 'popup',
-    signInSuccessUrl: 'main.html',
+    signInSuccessUrl: 'index.html',
     signInOptions: [
         firebase.auth.EmailAuthProvider.PROVIDER_ID
     ],
