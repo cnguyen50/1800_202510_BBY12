@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let doctorID = localStorage.getItem("selectedDoctorID");
         
         // Add event listener to delete button
-        document.getElementById("delete-button").addEventListener("click", function() {
+        // document.getElementById("delete-button").addEventListener("click", function() {
             console.log("testing outside .then delete doc")
             //if  db colecction callback function isnt running correctly
             //read doctor id from storage
@@ -69,9 +69,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     console.error("Error deleting doctor:", error);
                 });
             }
-        });
+        // });
     }
-    // document.getElementById("delete-button").addEventListener("click", deleteDoctor);
+    document.getElementById("delete-button").addEventListener("click", deleteDoctor);
     
     // Renders the form with existing doctor data on page load
     db.collection("doctors").doc(doctorID).get()
