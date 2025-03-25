@@ -92,3 +92,37 @@ footer {
     padding: 15px;
     margin-top: 20px;
 }
+
+@media (max-width: 768px) {
+    /* Make sections stack vertically */
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .appointment, .doctor-info, .emergency-contact, .welcome, .scrollable-content {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    /* Enable scrolling for mobile sections */
+    .appointment, .doctor-info, .emergency-contact {
+        overflow-y: auto;
+        max-height: 400px;
+    }
+
+    /* Add more space between sections */
+    .container > div {
+        margin-bottom: 20px;
+    }
+
+    /* Adjust font sizes for mobile */
+    .welcome h1 {
+        font-size: 1.2em;
+    }
+
+    .scrollable-content {
+        max-height: 250px;
+    }
+}
