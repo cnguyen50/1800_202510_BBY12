@@ -1,8 +1,3 @@
-// Redirect to Add Appointment Page
-document.getElementById("add-appointment-btn").onclick = function() {
-    window.location.href = "addappointment.html";
-};
-
 // Fetch all doctors for the dropdown
 function fetchDoctors() {
     db.collection("doctors").get().then(snapshot => {

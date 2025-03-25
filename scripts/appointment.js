@@ -1,3 +1,8 @@
+// Redirect to Add Appointment Page
+document.getElementById("add-appointment-btn").onclick = function() {
+    window.location.href = "addappointment.html";
+};
+
 function fetchAppointments(callback) {
     db.collection("appointment").get().then(snapshot => {
         let appointments = [];
