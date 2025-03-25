@@ -49,11 +49,18 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Function to delete the doctor from Firestore
     function deleteDoctor() {
+        console.log("testing outside .then delete doc")
+        //if  db colecction callback function isnt running correctly
+        //read doctor id from storage
+        console.log("doctorID before deletion:", doctorID);
+        console.log(localStorage.getItem("selectedDoctorID"));
+
+
         if (confirm("Are you sure you want to delete?")) {
             db.collection("doctors").doc(doctorID).delete().then(() => {
-                alert("Doctor successfully deleted!");
+                alert("Doctor successfully deleted!" + selectedDoctorId);
                 localStorage.removeItem("selectedDoctorID");
-                window.location.href = "doctorInfo.html";
+                // window.location.href = "doctorInfo.html";
             }).catch(error => {
                 console.error("Error deleting doctor:", error);
             });
