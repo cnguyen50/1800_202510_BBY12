@@ -1,4 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('/fonts/Segoe UI Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('/fonts/Segoe UI Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
 
 :root {
     --text-clr: #ebead7;
@@ -7,7 +19,7 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     font-weight: bold;
     overflow-x: hidden;
     background-color: #f4f4f4;
@@ -26,6 +38,7 @@ nav {
 }
 
 .container {
+    font-weight: bold;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
@@ -85,16 +98,65 @@ nav {
     text-align: center;
 }
 
-footer {
-    background: #007bff;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: 20px;
+/* Footer */
+.footer {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    padding: var(--lwc-varSpacingMedium, var(--lwc-spacingMedium, 1.0rem));
 }
 
+.footer_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.footer_left {
+    color: #333;
+}
+
+.footer_left a {
+    text-decoration: none;
+    color: var(--accent-clr);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer_left a:hover {
+    color: #a4b4c2;
+}
+
+.footer_right {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    color: #333;
+}
+
+.footer_right a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer_right a:hover {
+    color: #a4b4c2;
+}
+
+/* Increase size of social media icons */
+.bi {
+    font-size: 1.5em;
+}
+
+/* Mobile */
 @media (max-width: 768px) {
-    /* Make sections stack vertically */
     .container {
         display: flex;
         flex-direction: column;
@@ -117,7 +179,6 @@ footer {
         margin-bottom: 20px;
     }
 
-    /* Adjust font sizes for mobile */
     .welcome h1 {
         font-size: 1.2em;
     }

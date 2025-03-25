@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetchDoctors();
+    
+    document.getElementById("add-button").addEventListener("click", function() {
+        addAppointment();
+    });
 });
 
 // Fetch all doctors for the dropdown
