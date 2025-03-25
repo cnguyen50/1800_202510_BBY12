@@ -25,13 +25,15 @@ function handleFileUpload(e) {
     const file = e.target.files[0];
     if (!file) return;
 
+    const inputId = e.target.id; // Store input ID before reader runs
     const reader = new FileReader();
+
     reader.onload = function(e) {
         const base64Data = e.target.result.split(',')[1];
-        const previewId = e.target.id.replace('input', 'goes-here');
+        const previewId = inputId.replace('input', 'goes-here'); // Use stored input ID
         
         // Store in correct variable and update preview
-        if (e.target.id.includes('1')) {
+        if (inputId.includes('1')) {
             ImageFile1 = base64Data;
         } else {
             ImageFile2 = base64Data;
@@ -59,25 +61,49 @@ function saveImages() {
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            db.collection("users").doc(user.uid).collection("medicalImages").add({
-                image1: ImageFile1,
-                image2: ImageFile2,
-                uploadedAt: firebase.firestore.FieldValue.serverTimestamp()
-            })
-            .then(() => {
-                alert("Images saved successfully!");
-                resetImageForm();
-                displayImagesFromFirestore();
-            })
-            .catch(error => {
-                console.error("Error saving images:", error);
-                alert("Error saving images: " + error.message);
+            const userImagesRef = db.collection("users").doc(user.uid).collection("images");
+
+            // Check if a document already exists
+            userImagesRef.limit(1).get().then(snapshot => {
+                if (!snapshot.empty) {
+                    // If a document exists, update it
+                    const docId = snapshot.docs[0].id;
+                    userImagesRef.doc(docId).update({
+                        image1: ImageFile1,
+                        image2: ImageFile2,
+                        uploadedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    }).then(() => {
+                        alert("Images updated successfully!");
+                        resetImageForm();
+                        displayImagesFromFirestore();
+                    }).catch(error => {
+                        console.error("Error updating images:", error);
+                        alert("Error updating images: " + error.message);
+                    });
+                } else {
+                    // If no document exists, create a new one
+                    userImagesRef.add({
+                        image1: ImageFile1,
+                        image2: ImageFile2,
+                        uploadedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    }).then(() => {
+                        alert("Images saved successfully!");
+                        resetImageForm();
+                        displayImagesFromFirestore();
+                    }).catch(error => {
+                        console.error("Error saving images:", error);
+                        alert("Error saving images: " + error.message);
+                    });
+                }
+            }).catch(error => {
+                console.error("Error checking for existing images:", error);
             });
         } else {
             alert("You must be signed in to save images.");
         }
     });
 }
+
 
 // ======================
 // Display Images (Carousel)
@@ -88,7 +114,7 @@ function displayImagesFromFirestore() {
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            db.collection("users").doc(user.uid).collection("medicalImages")
+            db.collection("users").doc(user.uid).collection("images")
                 .orderBy("uploadedAt", "desc")
                 .get()
                 .then(snapshot => {
@@ -153,6 +179,16 @@ function initCarousel() {
 // ======================
 // Helper Functions
 // ======================
+// Helper function to clear the form
+function resetImageForm() {
+    document.getElementById("mypic-input1").value = "";
+    document.getElementById("mypic-input2").value = "";
+    document.getElementById("mypic-goes-here1").src = "";
+    document.getElementById("mypic-goes-here2").src = "";
+    ImageFile1 = null;
+    ImageFile2 = null;
+}
+
 function showNoImagesMessage(container) {
     container.innerHTML = `
         <div class="carousel-item active text-center py-5">
