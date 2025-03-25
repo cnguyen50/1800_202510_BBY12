@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 updatedAt: firebase.firestore.FieldValue.serverTimestamp() 
             }).then(() => {
                 console.log("Doctor information updated successfully!");
-                // window.location.href = "";
+                window.location.href = "doctorInfo.html";
             }).catch(error => {
                 console.error("Error updating doctor information: ", error);
             });
@@ -50,28 +50,31 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to delete the doctor from Firestore
     function deleteDoctor() {
         let doctorID = localStorage.getItem("selectedDoctorID");
-
-        console.log("testing outside .then delete doc")
-        //if  db colecction callback function isnt running correctly
-        //read doctor id from storage
-        console.log("doctorID before deletion:", doctorID);
-        console.log(localStorage.getItem("selectedDoctorID"));
-
-
-        if (confirm("Are you sure you want to delete?")) {
-            db.collection("doctors").doc(doctorID).delete().then(() => {
-                alert("Doctor successfully deleted!");
-                console.log("after clicking pop up")
-                localStorage.removeItem("selectedDoctorID");
-                // window.location.href = "doctorInfo.html";
-            }).catch(error => {
-                console.error("Error deleting doctor:", error);
-            });
-        }
+        
+        // Add event listener to delete button
+        document.getElementById("delete-button").addEventListener("click", function() {
+            console.log("testing outside .then delete doc")
+            //if  db colecction callback function isnt running correctly
+            //read doctor id from storage
+            console.log("doctorID before deletion:", doctorID);
+            console.log(localStorage.getItem("selectedDoctorID"));
+            console.log("testing boolean" + confirm("Are you sure you want to delete?"))
+    
+            if (confirm("Are you sure you want to delete?")) {
+                db.collection("doctors").doc(doctorID).delete().then(() => {
+                    alert("Doctor successfully deleted!");
+                    console.log("after clicking pop up")
+                    //localStorage.removeItem("selectedDoctorID");
+                    // window.location.href = "doctorInfo.html";
+                }).catch(error => {
+                    console.error("Error deleting doctor:", error);
+                });
+            }
+        });
     }
 
-    // Add event listener to delete button
-    document.getElementById("delete-button").addEventListener("click", deleteDoctor);
+// Call the deleteDoctor function to add the event listener
+// deleteDoctor();
     
     // Renders the form with existing doctor data on page load
     db.collection("doctors").doc(doctorID).get()
