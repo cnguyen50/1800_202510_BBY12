@@ -75,7 +75,7 @@ function saveImages() {
                     }).then(() => {
                         alert("Images saved successfully!");
                         resetImageForm();
-                        displayImagesFromFirestore();
+                        // displayImagesFromFirestore();
                     }).catch(error => {
                         console.error("Error saving images:", error);
                         alert("Error saving images: " + error.message);
