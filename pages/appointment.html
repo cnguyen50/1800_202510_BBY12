@@ -32,8 +32,7 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/style.css">
-
+    <link rel="stylesheet" href="../styles/style.css">
 
 </head>
 
@@ -46,25 +45,29 @@
     <nav id="navbarPlaceholder"></nav>
 
     <div class="container mt-4">
-        <h1>Add New Appointment</h1>
-        <form id="add-appointment-form">
-            <div class="mb-3">
-                <label for="doctor-name" class="form-label">Doctor</label>
-                <select id="doctor-name" class="form-select">
-                    <option value="">Select a Doctor</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="appointment-date" class="form-label">Date</label>
-                <input type="date" id="appointment-date" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="appointment-time" class="form-label">Time</label>
-                <input type="time" id="appointment-time" class="form-control">
-            </div>
-            <button type="button" id="add-button" class="btn btn-primary">Add Appointment</button>
-        </form>
+        <h1>Appointment</h1>
+        <div id="contacts-list" class="row"></div> 
     </div>
+
+    <!-- Hidden Card Template (this will be cloned for each appointment) -->
+    <div id="appointment-list" class="row"></div>
+    <template id="appointmentCardTemplate">
+        <div class="col-md-7">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title" id="doctor-name"></h5>
+                    <p class="card-text" id="appointment-date"></p>
+                    <p class="card-text" id="appointment-time"></p>
+                    <p class="card-text" id="doctor-address"></p>
+                    <a href="#" id="doctor-email" class="btn btn-primary">Email</a>
+                    <button class="edit-button btn btn-warning mt-2">Edit</button> <!-- Add Edit button -->
+                </div>
+            </div>
+        </div>
+    </template>    
+
+    <!-- Add Appointment Button -->
+    <button id="add-appointment-btn" class="btn btn-success mt-3">Add New Appointment</button>
 
     <footer id="footerPlaceholder"></footer>
     <!---------------------------------------------->
@@ -73,11 +76,11 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-    <script src="./scripts/firebaseAPI_Team12.js"></script>
-    <script src="./scripts/authentication.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/addAppointment.js"></script>
+    <script src="../scripts/firebaseAPI_Team12.js"></script>
+    <script src="../scripts/authentication.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/appointment.js"></script>
 </body>
 
 </html>

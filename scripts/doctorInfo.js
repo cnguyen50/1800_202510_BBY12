@@ -21,7 +21,7 @@ function displayAllDoctors() {
             editButton.innerText = "Edit";
             editButton.onclick = function() {
                 localStorage.setItem("selectedDoctorID", doctorID); // Store doctorID
-                window.location.href = "editDoctorInfo.html"; // Redirect to edit page
+                window.location.href = "../pages/editDoctorInfo.html"; // Redirect to edit page
             };
 
             // Append button

@@ -18,7 +18,7 @@ function displayAllMedications() {
             editButton.innerText = "Edit";
             editButton.onclick = function () {
                 localStorage.setItem("selectedMedicationID", medicationID); // Store medicationID
-                window.location.href = "editMedication.html"; // Redirect to edit page
+                window.location.href = "../pages/editMedication.html"; // Redirect to edit page
             };
 
             // Append edit button

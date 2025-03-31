@@ -2,9 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Medication</title>
+    <title>My BCIT Project</title>
     <meta name="comp1800 template" content="My 1800 App">
 
+    <!------------------------>
+    <!-- Required meta tags -->
+    <!------------------------>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,14 +28,15 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script> -->
+    <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" /> -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
     <!-------------------------------------------->
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
+
 
 </head>
 
@@ -42,31 +46,30 @@
     <!------------------------------>
     <!-- Stuff for body goes here -->
 
-    <!-- Doctor Card Template for Listing -->
-    <template id="medicationCardTemplate">
-        <div class="col-md-4">
-            <div class="card py-2 mx-2">
-                <div class="card-body">
-                    <h5 class="card-title" id="medication-name">Medication</h5>
-                    <p id="medication-dose">Dosage: Placeholder</p>
-                    <p id="medication-instructions">Instructions: Placeholder</p>
-                </div>
-            </div>
-        </div>
-    </template>
-
     <nav id="navbarPlaceholder"></nav>
 
-    <h1>Medication</h1>
-    <div id="single-medication" class="my-4">
-        <h2 id="medication-name"></h2>
-        <p id="medication-dose"></p>
-        <p id="medication-instructions"></p>
-    </div>
+    <div class="container mt-4">
+        <h1>Edit Medications</h1>
+        <form id="edit-medication-form">
 
-    <!-- Section for Listing All Doctors (if no docID is provided) -->
-    <h2 class="mt-5">List of Medications</h2>
-    <div id="medication-list" class="row"></div>
+            <div class="mb-3">
+                <label for="medication-name" class="form-label">Medication Name</label>
+                <input type="text" class="form-control" id="medication-name">
+            </div>
+
+            <div class="mb-3">
+                <label for="medication-dose" class="form-label">Medication Dose</label>
+                <input type="text" class="form-control" id="medication-dose">
+            </div>
+
+            <div class="mb-3">
+                <label for="medication-instructions" class="form-label">Medication Instructions</label>
+                <input type="text" class="form-control" id="medication-instructions">
+            </div>
+
+            <button type="button" id="save-button" class="btn btn-primary">Save</button>
+        </form>
+    </div>
 
     <footer id="footerPlaceholder"></footer>
 
@@ -76,11 +79,11 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-    <script src="./scripts/firebaseAPI_Team12.js"></script>
-    <script src="./scripts/authentication.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/medication.js"></script>
+    <script src="../scripts/firebaseAPI_Team12.js"></script>
+    <script src="../scripts/authentication.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/editMedication.js"></script>
 
 </body>
 

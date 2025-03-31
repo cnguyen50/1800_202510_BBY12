@@ -2,12 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
+    <title>Medical History</title>
     <meta name="comp1800 template" content="My 1800 App">
 
-    <!------------------------>
-    <!-- Required meta tags -->
-    <!------------------------>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,15 +25,14 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" /> -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script> -->
 
     <!-------------------------------------------->
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/style.css">
-
+    <link rel="stylesheet" href="../styles/style.css">
 
 </head>
 
@@ -48,26 +44,24 @@
 
     <nav id="navbarPlaceholder"></nav>
 
-    <div class="container mt-4">
-        <h1>Edit Medications</h1>
-        <form id="edit-medication-form">
+    <h1>Medical History</h1>
+    <div class="container">
+        <h1>Upload images </h1>
+        <form>
+            <div id="loader">
+                <div class="container py-3">
+                    <input type="file" id="mypic-input1" accept="image/*" />
+                    <img id="mypic-goes-here1" width=100 height=100 />
+                    <input type="file" id="mypic-input2" accept="image/*" />
+                    <img id="mypic-goes-here2" width=100 height=100 />
+                </div>
+                <div class="d-flex mt-5">
+                    <button type="button" class="btn btn-info" onclick="saveImages()">Save</button>
+                </div>
+                <!-- Add this template (hidden) -->
 
-            <div class="mb-3">
-                <label for="medication-name" class="form-label">Medication Name</label>
-                <input type="text" class="form-control" id="medication-name">
-            </div>
 
-            <div class="mb-3">
-                <label for="medication-dose" class="form-label">Medication Dose</label>
-                <input type="text" class="form-control" id="medication-dose">
-            </div>
 
-            <div class="mb-3">
-                <label for="medication-instructions" class="form-label">Medication Instructions</label>
-                <input type="text" class="form-control" id="medication-instructions">
-            </div>
-
-            <button type="button" id="save-button" class="btn btn-primary">Save</button>
         </form>
     </div>
 
@@ -79,11 +73,11 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-    <script src="./scripts/firebaseAPI_Team12.js"></script>
-    <script src="./scripts/authentication.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/editMedication.js"></script>
+    <script src="../scripts/firebaseAPI_Team12.js"></script>
+    <script src="../scripts/authentication.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/medical.js"></script>
 
 </body>
 

@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 updatedAt: firebase.firestore.FieldValue.serverTimestamp() 
             }).then(() => {
                 console.log("Doctor information updated successfully!");
-                window.location.href = "doctorInfo.html";
+                window.location.href = "../pages/doctorInfo.html";
             }).catch(error => {
                 console.error("Error updating doctor information: ", error);
             });
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     alert("Doctor successfully deleted!");
                     console.log("after clicking pop up")
                     localStorage.removeItem("selectedDoctorID");
-                    window.location.href = "doctorInfo.html";
+                    window.location.href = "../pages/doctorInfo.html";
                 }).catch(error => {
                     console.error("Error deleting doctor:", error);
                 });

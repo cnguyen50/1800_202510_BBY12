@@ -1,6 +1,6 @@
 // Redirect to Add Appointment Page
 document.getElementById("add-appointment-btn").onclick = function() {
-    window.location.href = "addappointment.html";
+    window.location.href = "../pages/addappointment.html";
 };
 
 function fetchAppointments(callback) {
@@ -50,7 +50,7 @@ function createAppointmentCard(appointment) {
         let editButton = newCard.querySelector(".edit-button");
         editButton.onclick = function() {
             localStorage.setItem("selectedAppointmentID", appointment.id);
-            window.location.href = "editAppointment.html";
+            window.location.href = "../pages/editAppointment.html";
         };
 
         // Append card to the list

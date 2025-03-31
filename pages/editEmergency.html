@@ -35,7 +35,7 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 
 
 </head>
@@ -49,19 +49,27 @@
     <nav id="navbarPlaceholder"></nav>
 
     <div class="container mt-4">
-        <h1>Edit Appointment</h1>
-        <form id="edit-appointment-form">
+        <h1>Edit Emergency Contact Information</h1>
+        <form id="edit-emergency-form">
             <div class="mb-3">
-                <label for="doctor-name" class="form-label">Doctor</label>
-                <select id="doctor-name" class="form-control"></select>
+                <label for="contact-name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="contact-name">
             </div>
             <div class="mb-3">
-                <label for="appointment-date" class="form-label">Date</label>
-                <input type="date" id="appointment-date" class="form-control">
+                <label for="contact-relationship" class="form-label">Relationship</label>
+                <input type="text" class="form-control" id="contact-relationship">
             </div>
             <div class="mb-3">
-                <label for="appointment-time" class="form-label">Time</label>
-                <input type="time" id="appointment-time" class="form-control">
+                <label for="contact-phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="contact-phone">
+            </div>
+            <div class="mb-3">
+                <label for="contact-address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="contact-address">
+            </div>
+            <div class="mb-3">
+                <label for="contact-email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="contact-email">
             </div>
             <button type="button" id="save-button" class="btn btn-primary">Save</button>
         </form>
@@ -76,11 +84,11 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-    <script src="./scripts/firebaseAPI_Team12.js"></script>
-    <script src="./scripts/authentication.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/editAppointment.js"></script>
+    <script src="../scripts/firebaseAPI_Team12.js"></script>
+    <script src="../scripts/authentication.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/editEmergency.js"></script>
 
 </body>
 
