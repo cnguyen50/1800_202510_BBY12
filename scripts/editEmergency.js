@@ -64,7 +64,7 @@ function saveEmergencyInfo() {
             .catch(error => console.error("Error updating emergency contact information: ", error));
     } else {
         console.log("No user is signed in");
-        window.location.href = 'login.html';
+        window.location.href = '/login.html';
     }
 }
 

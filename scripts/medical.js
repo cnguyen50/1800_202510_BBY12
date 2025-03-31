@@ -82,7 +82,7 @@ function updateExistingImage(userImagesRef, snapshot) {
     }).then(() => {
         alert("Images updated successfully!");
         setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "/index.html";
         }, 1000); // 1-second delay before redirection
     }).catch(error => {
         console.error("Error updating images:", error);
