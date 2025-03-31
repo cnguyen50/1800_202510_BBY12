@@ -1,13 +1,15 @@
-// ======================
-// File Upload Handling
-// ======================
+// ============================
+// Listening for File Select
+// ============================
 function listenFileSelect() {
     document.getElementById("mypic-input1").addEventListener('change', handleFileUpload);
     document.getElementById("mypic-input2").addEventListener('change', handleFileUpload);
 }
-
 listenFileSelect();
 
+// ======================
+// File Upload Handling
+// ======================
 function handleFileUpload(e) {
     const file = e.target.files[0];
     if (!file) return;
@@ -30,6 +32,9 @@ function handleFileUpload(e) {
     reader.readAsDataURL(file);
 }
 
+// ======================
+// Display image preview
+// ======================
 function updatePreview(elementId, imageData) {
     const element = document.getElementById(elementId);
     if (element) {
@@ -37,9 +42,9 @@ function updatePreview(elementId, imageData) {
     }
 }
 
-// ======================
-// Save to Firestore
-// ======================
+// ============
+// Save images
+// ============
 function saveImages() {
     if (!ImageFile1 || !ImageFile2) {
         alert("Please upload both images before saving.");
@@ -47,60 +52,57 @@ function saveImages() {
     }
 
     firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            const userImagesRef = db.collection("users").doc(user.uid).collection("images");
-
-            // Check if a document already exists
-            userImagesRef.limit(1).get().then(snapshot => {
-                if (!snapshot.empty) {
-                    // If a document exists, update it
-                    const docId = snapshot.docs[0].id;
-                    userImagesRef.doc(docId).update({
-                        image1: ImageFile1,
-                        image2: ImageFile2,
-                        uploadedAt: firebase.firestore.FieldValue.serverTimestamp()
-                    }).then(() => {
-                        alert("Images updated successfully!");
-                        resetImageForm();
-                    }).catch(error => {
-                        console.error("Error updating images:", error);
-                        alert("Error updating images: " + error.message);
-                    });
-                } else {
-                    // If no document exists, create a new one
-                    userImagesRef.add({
-                        image1: ImageFile1,
-                        image2: ImageFile2,
-                        uploadedAt: firebase.firestore.FieldValue.serverTimestamp()
-                    }).then(() => {
-                        alert("Images saved successfully!");
-                        resetImageForm();
-                        // displayImagesFromFirestore();
-                    }).catch(error => {
-                        console.error("Error saving images:", error);
-                        alert("Error saving images: " + error.message);
-                    });
-                }
-            }).catch(error => {
-                console.error("Error checking for existing images:", error);
-            });
-        } else {
+        if (!user) {
             alert("You must be signed in to save images.");
+            return;
         }
+
+        loader.innerHTML = '<div class="spinner-border"></div>';
+        const userImagesRef = db.collection("users").doc(user.uid).collection("images");
+
+        userImagesRef.limit(1).get()
+            .then(snapshot => {
+                snapshot.empty 
+                    ? createNewImage(userImagesRef) 
+                    : updateExistingImage(userImagesRef, snapshot);
+            })
+            .catch(error => console.error("Error checking for existing images:", error));
     });
 }
 
+// ========================
+// Update images for user
+// ========================
+function updateExistingImage(userImagesRef, snapshot) {
+    const docId = snapshot.docs[0].id;
+    userImagesRef.doc(docId).update({
+        image1: ImageFile1,
+        image2: ImageFile2,
+        uploadedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+        alert("Images updated successfully!");
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1000); // 1-second delay before redirection
+    }).catch(error => {
+        console.error("Error updating images:", error);
+        alert("Error updating images: " + error.message);
+    });
+}
 
-// ======================
-// Helper Functions
-// ======================
-// Helper function to clear the form
-function resetImageForm() {
-    document.getElementById("mypic-input1").value = "";
-    document.getElementById("mypic-input2").value = "";
-    document.getElementById("mypic-goes-here1").src = "";
-    document.getElementById("mypic-goes-here2").src = "";
-    ImageFile1 = null;
-    ImageFile2 = null;
+// ============================
+// Listening for File Select
+// ============================
+function createNewImage(userImagesRef) {
+    userImagesRef.add({
+        image1: ImageFile1,
+        image2: ImageFile2,
+        uploadedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+        alert("Images saved successfully!");
+    }).catch(error => {
+        console.error("Error saving images:", error);
+        alert("Error saving images: " + error.message);
+    });
 }
 
