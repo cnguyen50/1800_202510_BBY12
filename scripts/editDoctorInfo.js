@@ -39,6 +39,23 @@ document.addEventListener("DOMContentLoaded", function() {
             // Add event listener to save button
             document.getElementById("save-button").addEventListener("click", saveDoctorInfo);
 
+            // Add event listener to delete button
+            document.getElementById("delete-button").addEventListener("click", deleteDoctor);
+
+            // Function to delete the doctor from Firestore
+            function deleteDoctor() {            
+                if (confirm("Are you sure you want to delete?")) {
+                    doctorRef.delete().then(() => {
+                        alert("Doctor successfully deleted!");
+                        localStorage.removeItem("selectedDoctorID");
+                        window.location.href = "doctorInfo.html";
+                    }).catch(error => {
+                        console.error("Error deleting doctor:", error);
+                    });
+                }
+            }
+
+
             // Renders the form with existing doctor data on page load
             doctorRef.get().then(doc => {
                 if (doc.exists) {
