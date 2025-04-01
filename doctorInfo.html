@@ -32,15 +32,15 @@
 <body>
     <!-- Doctor Card Template for Listing -->
     <template id="doctorCardTemplate">
-        <div class="col-md-4">
-            <div class="card py-2 mx-2">
-                <div class="card-body">
+        <div class="col-md-4"> 
+            <div class="card py-2 mx-2"> 
+                <div class="card-body"> 
                     <h5 class="card-title" id="doctor-name">Doctor's Name</h5>
                     <p id="doctor-specialization">Specialization: Placeholder</p>
                     <p id="doctor-office">Office: Placeholder</p>
                     <p id="doctor-address">Address: Placeholder</p>
                     <a href="#" id="doctor-email">Email</a>
-                </div>
+                    </div>
             </div>
         </div>
     </template>
@@ -59,10 +59,15 @@
             <p id="doctor-address"></p>
             <a id="doctor-email"></a>
         </div>
-
+        
         <!-- Section for Listing All Doctors (if no docID is provided) -->
         <h2 class="mt-5">List of Doctors</h2>
         <div id="doctors-list" class="row"></div>
+        <div class="container text-center my-4"> 
+            <a href="addDoctor.html" class="btn btn-success btn-lg">
+                <i class="bi bi-plus-circle-fill me-2"></i> Add New Doctor 
+            </a>
+        </div>
         
     </div>
 
