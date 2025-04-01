@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Medication</title>
+    <title>Medical History</title>
     <meta name="comp1800 template" content="My 1800 App">
 
     <meta charset="utf-8">
@@ -32,7 +32,7 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 
 </head>
 
@@ -42,35 +42,27 @@
     <!------------------------------>
     <!-- Stuff for body goes here -->
 
-    <!-- Doctor Card Template for Listing -->
-    <template id="medicationCardTemplate">
-        <div class="col-md-4">
-            <div class="card py-2 mx-2">
-                <div class="card-body">
-                    <h5 class="card-title" id="medication-name">Medication</h5>
-                    <p id="medication-dose">Dosage: Placeholder</p>
-                    <p id="medication-instructions">Instructions: Placeholder</p>
-                </div>
-            </div>
-        </div>
-    </template>
-
     <nav id="navbarPlaceholder"></nav>
 
-    <h1>Medication</h1>
-    <div id="single-medication" class="my-4">
-        <h2 id="medication-name"></h2>
-        <p id="medication-dose"></p>
-        <p id="medication-instructions"></p>
-    </div>
+    <h1>Medical History</h1>
+    <div class="container">
+        <h1>Upload images </h1>
+        <form>
+            <div id="loader">
+                <div class="container py-3">
+                    <input type="file" id="mypic-input1" accept="image/*" />
+                    <img id="mypic-goes-here1" width=100 height=100 />
+                    <input type="file" id="mypic-input2" accept="image/*" />
+                    <img id="mypic-goes-here2" width=100 height=100 />
+                </div>
+                <div class="d-flex mt-5">
+                    <button type="button" class="btn btn-info" onclick="saveImages()">Save</button>
+                </div>
+                <!-- Add this template (hidden) -->
 
-    <!-- Section for Listing All Medications-->
-    <h2 class="mt-5">List of Medications</h2>
-    <div id="medication-list" class="row"></div>
-    <div class="container text-center my-4"> 
-        <a href="addMedication.html" class="btn btn-success btn-lg">
-            <i class="bi bi-plus-circle-fill me-2"></i> Add New Medication 
-        </a>
+
+
+        </form>
     </div>
 
     <footer id="footerPlaceholder"></footer>
@@ -81,10 +73,11 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-    <script src="./scripts/firebaseAPI_Team12.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/medication.js"></script>
+    <script src="../scripts/firebaseAPI_Team12.js"></script>
+    <script src="../scripts/authentication.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/medical.js"></script>
 
 </body>
 

@@ -48,7 +48,7 @@ function addAppointment() {
         appointmentTime: appointmentDateTime,
     }).then(() => {
         alert("Appointment added!");
-        window.location.href = "appointment.html";  // Redirect to appointment page
+        window.location.href = "../pages/appointment.html";  // Redirect to appointment page
     }).catch(error => {
         console.error("Error adding appointment:", error);
     });

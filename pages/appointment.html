@@ -2,12 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
+    <title>Emergency Contacts</title>
     <meta name="comp1800 template" content="My 1800 App">
 
-    <!------------------------>
-    <!-- Required meta tags -->
-    <!------------------------>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,15 +25,14 @@
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
-        <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" /> -->
+        <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />-->
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
     <!-------------------------------------------->
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/style.css">
-
+    <link rel="stylesheet" href="../styles/style.css">
 
 </head>
 
@@ -49,39 +45,42 @@
     <nav id="navbarPlaceholder"></nav>
 
     <div class="container mt-4">
-        <h1>Edit Appointment</h1>
-        <form id="edit-appointment-form">
-            <div class="mb-3">
-                <label for="doctor-name" class="form-label">Doctor</label>
-                <select id="doctor-name" class="form-control"></select>
-            </div>
-            <div class="mb-3">
-                <label for="appointment-date" class="form-label">Date</label>
-                <input type="date" id="appointment-date" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="appointment-time" class="form-label">Time</label>
-                <input type="time" id="appointment-time" class="form-control">
-            </div>
-            <button type="button" id="save-button" class="btn btn-primary">Save</button>
-        </form>
+        <h1>Appointment</h1>
+        <div id="contacts-list" class="row"></div> 
     </div>
 
+    <!-- Hidden Card Template (this will be cloned for each appointment) -->
+    <div id="appointment-list" class="row"></div>
+    <template id="appointmentCardTemplate">
+        <div class="col-md-7">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title" id="doctor-name"></h5>
+                    <p class="card-text" id="appointment-date"></p>
+                    <p class="card-text" id="appointment-time"></p>
+                    <p class="card-text" id="doctor-address"></p>
+                    <a href="#" id="doctor-email" class="btn btn-primary">Email</a>
+                    <button class="edit-button btn btn-warning mt-2">Edit</button> <!-- Add Edit button -->
+                </div>
+            </div>
+        </div>
+    </template>    
+
+    <!-- Add Appointment Button -->
+    <button id="add-appointment-btn" class="btn btn-success mt-3">Add New Appointment</button>
 
     <footer id="footerPlaceholder"></footer>
-
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-    <script src="./scripts/firebaseAPI_Team12.js"></script>
-    <script src="./scripts/authentication.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/editAppointment.js"></script>
-
+    <script src="../scripts/firebaseAPI_Team12.js"></script>
+    <script src="../scripts/authentication.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/appointment.js"></script>
 </body>
 
 </html>

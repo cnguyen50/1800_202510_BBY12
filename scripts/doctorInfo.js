@@ -26,7 +26,7 @@ function displayAllDoctors() {
                     editButton.innerText = "Edit";
                     editButton.onclick = function() {
                         localStorage.setItem("selectedDoctorID", doctorID); // Store doctorID
-                        window.location.href = "editDoctorInfo.html"; // Redirect to edit page
+                        window.location.href = "../pages/editDoctorInfo.html"; // Redirect to edit page
                     };
         
                     // Append button
@@ -43,14 +43,10 @@ function displayAllDoctors() {
             console.log("No user signed in to display doctors.");
             document.getElementById("doctors-list").innerHTML = '<p>Please log in to see your doctors.</p>';
         }
-    })
+    }).catch(error => {
+        console.error("Error fetching doctors:", error);
+    });
 }
 
 // Call the function to display all doctors
 displayAllDoctors();
-
-function test() {
-    console.log("testing inside from doctorsInfo");
-}
-
-test();

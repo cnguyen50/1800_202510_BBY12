@@ -28,14 +28,14 @@
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
-        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+        <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" /> -->
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
     <!-------------------------------------------->
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 
 
 </head>
@@ -48,35 +48,25 @@
 
     <nav id="navbarPlaceholder"></nav>
 
-        <div class="container mt-4">
-        <h1>Edit Doctor Information</h1>
-        <form id="edit-doctor-form">
+    <div class="container mt-4">
+        <h1>Edit Appointment</h1>
+        <form id="edit-appointment-form">
             <div class="mb-3">
-                <label for="doctor-name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="doctor-name">
-            </div>
-            <div class="mb-3">
-                <label for="doctor-specialization" class="form-label">Specialization</label>
-                <input type="text" class="form-control" id="doctor-specialization">
+                <label for="doctor-name" class="form-label">Doctor</label>
+                <select id="doctor-name" class="form-control"></select>
             </div>
             <div class="mb-3">
-                <label for="doctor-office" class="form-label">Office</label>
-                <input type="text" class="form-control" id="doctor-office">
+                <label for="appointment-date" class="form-label">Date</label>
+                <input type="date" id="appointment-date" class="form-control">
             </div>
             <div class="mb-3">
-                <label for="doctor-address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="doctor-address">
+                <label for="appointment-time" class="form-label">Time</label>
+                <input type="time" id="appointment-time" class="form-control">
             </div>
-            <div class="mb-3">
-                <label for="doctor-email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="doctor-email">
-            </div>
-            <div id="buttonWrapper">
-                <button type="button" id="save-button" class="btn btn-primary">Save</button>
-                <button type="button" id="delete-button" class="btn btn-danger">Delete</button>
-            </div>
+            <button type="button" id="save-button" class="btn btn-primary">Save</button>
         </form>
     </div>
+
 
     <footer id="footerPlaceholder"></footer>
 
@@ -86,11 +76,11 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-    <script src="./scripts/firebaseAPI_Team12.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/authentication.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/editDoctorInfo.js"></script>
+    <script src="../scripts/firebaseAPI_Team12.js"></script>
+    <script src="../scripts/authentication.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/editAppointment.js"></script>
 
 </body>
 

@@ -56,7 +56,7 @@ function updateAppointment() {
         appointmentTime: appointmentDateTime // Store as Firestore Timestamp
     }).then(() => {
         alert("Appointment updated!");
-        window.location.href = "appointment.html";
+        window.location.href = "../pages/appointment.html";
     }).catch(error => {
         console.error("Error updating appointment:", error);
     });

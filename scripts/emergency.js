@@ -24,7 +24,7 @@ function displayAllEmergencyContacts() {
             editButton.innerText = "Edit";
             editButton.onclick = function() {
                 localStorage.setItem("selectedEmergencyID", emergencyID); // Store emergencyID
-                window.location.href = "editEmergency.html"; // Redirect to edit page
+                window.location.href = "../pages/editEmergency.html"; // Redirect to edit page
             };
 
             // Append button

@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     doctorRef.delete().then(() => {
                         alert("Doctor successfully deleted!");
                         localStorage.removeItem("selectedDoctorID");
-                        window.location.href = "doctorInfo.html";
+                        window.location.href = "../pages/doctorInfo.html";
                     }).catch(error => {
                         console.error("Error deleting doctor:", error);
                     });
