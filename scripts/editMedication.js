@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     medicationRef.delete().then(() => {
                         alert("Medication successfully deleted!");
                         localStorage.removeItem("selectedMedicationID");
-                        window.location.href = "medication.html";
+                        window.location.href = "../pages/medication.html";
                     }).catch(error => {
                         console.error("Error deleting medication:", error);
                     });

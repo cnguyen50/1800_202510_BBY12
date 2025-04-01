@@ -37,7 +37,7 @@ function addDoctor() {
             }).then(() => {
                 console.log("Doctor successfully added!");
                 alert("Doctor added!");
-                window.location.href = "doctorInfo.html"; 
+                window.location.href = "../pages/doctorInfo.html"; 
             }).catch(error => {
                 console.error("Error adding doctor: ", error);
                 alert("Error adding doctor. Please try again.");

@@ -32,7 +32,7 @@ function addMedication() {
             }).then(() => {
                 console.log("Medication successfully added!");
                 alert("Medication added!");
-                window.location.href = "medication.html";
+                window.location.href = "../pages/medication.html";
             }).catch(error => {
                 console.error("Error adding medication: ", error);
                 alert("Error adding medication. Please try again.");
