@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 console.log(doctorName, doctorSpecialization, doctorOffice, doctorAddress, doctorEmail);
 
-
                 // Update the doctor document with the new data
                 doctorRef.update({
                     name: doctorName,
@@ -39,6 +38,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Add event listener to save button
             document.getElementById("save-button").addEventListener("click", saveDoctorInfo);
+
+            // Renders the form with existing doctor data on page load
+            doctorRef.get().then(doc => {
+                if (doc.exists) {
+                    let doctorData = doc.data();
+                    // Set the input fields to the doctor's current information
+                    document.getElementById("doctor-name").value = doctorData.name;
+                    document.getElementById("doctor-specialization").value = doctorData.specialization;
+                    document.getElementById("doctor-office").value = doctorData.office;
+                    document.getElementById("doctor-address").value = doctorData.address;
+                    document.getElementById("doctor-email").value = doctorData.email;
+            } else {
+                console.error("Doctor not found!");
+            }
+        })
 
         } else {
             console.log("No user is signed in");
