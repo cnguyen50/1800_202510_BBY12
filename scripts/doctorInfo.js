@@ -4,7 +4,7 @@ function displayAllDoctors() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             // User is signed in. Get their UID.
-            console.log("Fetching doctors for user:", user.uid);
+            // console.log("Fetching doctors for user:", user.uid);
             
             db.collection("users").doc(user.uid).collection("doctors").get().then(userDoctors => {
                 userDoctors.forEach(doc => {
