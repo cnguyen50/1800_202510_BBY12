@@ -36,8 +36,9 @@ var uiConfig = {
 };
 
 //Only initialize FirebaseUI if the container exists
-if (document.getElementById("firebaseui-auth-container")) {
-    ui.start("#firebaseui-auth-container", uiConfig);
-} else {
-    console.log("FirebaseUI not initialized - No auth container found.");
-}
+// if (document.getElementById("firebaseui-auth-container")) {
+// } else {
+//     console.log("FirebaseUI not initialized - No auth container found.");
+// }
+
+ui.start("#firebaseui-auth-container", uiConfig);
