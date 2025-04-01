@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     console.log(medicationID);
 
-    firebase.auth().onAuthStateChange(user => {
+    firebase.auth().onAuthStateChanged(user => {
         if (user) {
             const userDocRef = db.collection("users").doc(user.uid);
-            const medicationRef = userDocRef.collection("medication").doc(medicationID);
+            const medicationRef = userDocRef.collection("medications").doc(medicationID);
 
             function saveMedication() {
                 let medicationName = document.getElementById("medication-name").value;
@@ -38,9 +38,25 @@ document.addEventListener("DOMContentLoaded", function() {
         
             // Add event listener to save button
             document.getElementById("save-button").addEventListener("click", saveMedication);
+
+            // Add event listener to delete button
+            document.getElementById("delete-button").addEventListener("click", deleteMedication);
+
+            // Function to delete the medication from Firestore
+            function deleteMedication() {            
+                if (confirm("Are you sure you want to delete?")) {
+                    medicationRef.delete().then(() => {
+                        alert("Medication successfully deleted!");
+                        localStorage.removeItem("selectedMedicationID");
+                        window.location.href = "medication.html";
+                    }).catch(error => {
+                        console.error("Error deleting medication:", error);
+                    });
+                }
+            }
         
             // Renders the form with existing medication data on page load
-            db.collection("medication").doc(medicationID).get()
+            medicationRef.get()
                 .then(doc => {
                     if (doc.exists) {
                         let medicationData = doc.data();
