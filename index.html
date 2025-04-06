@@ -58,7 +58,7 @@
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="card-title">
-                        <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        <button class="btn btn-link custom-btn" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                             aria-expanded="true" aria-controls="collapseOne" id="contact-name">
                             Collapsible Group Item #1
                         </button>
@@ -70,7 +70,7 @@
                         <p class="card-text" id="contact-relationship"></p>
                         <p class="card-text" id="contact-phone"></p>
                         <p class="card-text" id="contact-address"></p>
-                        <a href="#" id="contact-email" class="btn btn-primary">Email</a>
+                        <a href="#" id="contact-email" class="btn custom-btn-white">Email</a>
                     </div>
                 </div>
             </div>
@@ -94,27 +94,23 @@
             <div class="col-md-6">
                 <div class="appointment p-4 shadow rounded text-center">
                     <h2>Next Appointment</h2>
-                    <a href="/pages/appointment.html" class="btn custom-btn-index mt-2">View More</a>
-                    <a href="/pages/addAppointment.html" class="btn custom-btn-index mt-2">Add</a>
+                    <a href="/pages/appointment.html" class="btn custom-btn-white mt-2">View More</a>
+                    <a href="/pages/addAppointment.html" class="btn custom-btn mt-2">Add</a>
                 </div>
             </div>
 
             <!-- Medical Information -->
             <div class="col-md-6">
                 <div class="medical-info p-4 shadow rounded">
-                    <a href="/pages/uploadMedicalCards.html" class="btn custom-btn-index mt-2">Upload</a>
-                    <!-- <div class="scrollable-content" style="max-height: 150px; overflow-y: auto;">
-                        <p>Ensure you follow up on vaccinations and preventive screenings.</p> -->
-                        <!-- Your existing carousel -->
-                        <div class="container py-3">
-                            <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner" id="carousel-inner">
-                                    <!-- Loading state will appear here -->
-                                </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
-                                    data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon"></span>
-                                </button>
+                    <a href="/pages/uploadMedicalCards.html" class="btn custom-btn mt-2">Upload</a>
+                    <div class="container py-3">
+                        <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner" id="carousel-inner">
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
                                 <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
                                     data-bs-slide="next">
                                     <span class="carousel-control-next-icon"></span>
@@ -132,7 +128,7 @@
                 <div class="doctor-info p-4 shadow rounded text-center">
                     <h2>Doctors</h2>
                     <p><span id="next-doctor"></span></p>
-                    <a href="/pages/doctorInfo.html" class="btn custom-btn-index">View More</a>
+                    <a href="/pages/doctorInfo.html" class="btn custom-btn">View More</a>
                 </div>
             </div>
         </div>
@@ -142,8 +138,6 @@
             <div class="col-md-12">
                 <div class="doctor-info p-4 shadow rounded text-center">
                     <h2>Emergency Contact</h2>
-                    <!-- <p>Relationship: <span id="next-doctor"></span></p>
-                    <a href="emergency.html" class="btn btn-primary mt-2">Edit</a> -->
                     <div id="contacts-list" class="row"></div>
                 </div>
             </div>

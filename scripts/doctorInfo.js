@@ -22,7 +22,7 @@ function displayAllDoctors() {
         
                     // Create Edit button
                     let editButton = document.createElement("button");
-                    editButton.classList.add("btn", "btn-primary", "mt-2");
+                    editButton.classList.add("btn", "custom-btn", "mt-2");
                     editButton.innerText = "Edit";
                     editButton.onclick = function() {
                         localStorage.setItem("selectedDoctorID", doctorID); // Store doctorID

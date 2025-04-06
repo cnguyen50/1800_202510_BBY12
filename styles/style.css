@@ -25,14 +25,37 @@ body {
     font-family: 'FormaDJRBanner', sans-serif;
     font-weight: bold;
     overflow-x: hidden;
-    background-color: #f8f9fa;
-    margin: var(--lwc-spacingNone, 0px);
-    padding: var(--lwc-spacingNone, 0px);
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #fff;
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: top left;
 }
-
+  
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      white 0%,
+      rgba(255, 255, 255, 0) 10%,
+      rgba(255, 255, 255, 0) 90%,
+      white 100%
+    );
+    z-index: 1;
+}
+  
 /* Loading Screen */
 #loading-screen {
     position: fixed;
@@ -55,7 +78,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-image: url('/images/white-fabric-texture.jpg'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -96,12 +118,14 @@ body {
 
 /* Navigation bar */
 nav {
-    background: #f4f4f4;
+    background: none;
     padding: 15px;
-    color: white;
     text-align: center;
+    position: relative;
+    z-index: 10;
+    border: none;
 }
-
+  
 .navbar-brand img {
     height: 50px;
     width: auto;
@@ -220,20 +244,20 @@ nav {
   }
 
 .appointment {
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Cpath fill='%23FFD6E0' d='M0,0 H300 V160 C300,190 250,200 150,200 C50,200 0,190 0,160 Z'/%3E%3C/svg%3E") no-repeat;
+    background: url('placeholder') no-repeat;
     background-size: 100% 100%;
     padding: 30px;
     border-radius: 0 0 20px 20px;
 }
 
 .emergency-contact {
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Cpath fill='white' d='M0,30 C0,10 50,0 150,0 C250,0 300,10 300,30 V200 H0 Z'/%3E%3C/svg%3E") no-repeat;
+    background: url('placeholder') no-repeat;
     background-size: 100% 100%;
     padding: 40px 30px 30px;
 }
 
 .doctor-info {
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Cpath fill='white' d='M0,30 L150,0 L300,30 V170 C300,190 250,200 150,200 C50,200 0,190 0,170 Z'/%3E%3C/svg%3E") no-repeat;
+    background: url('placeholder') no-repeat;
     background-size: 100% 100%;
     padding: 50px 30px 30px;
 }
@@ -290,18 +314,7 @@ nav {
     color: #a4b4c2;
 }
 
-/* Adjust buttons */
-.custom-btn-index {
-    background-color: var(--primary-btn);
-    border-radius: 25px;
-}
-
-.custom-btn-index:hover {
-    background-color: var(--primary-btn-hover);
-    transform: translateY(-1px);
-    box-shadow: 0px 6px 15px var(--btn-shadow);
-}
-
+/* Buttons */
 .custom-btn {
     background-color: var(--primary-btn);
     color: var(--btn-text);
@@ -324,7 +337,7 @@ nav {
 }
 
 .custom-btn-white {
-    border: 2px solid black;  /* Thin black border */
+    border: 2px solid black;
     background: transparent;
     border-radius: 25px;
     padding: 12px 24px;
