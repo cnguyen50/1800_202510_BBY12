@@ -9,7 +9,7 @@ function loadSkeleton() {
             console.log($('#footerPlaceholder').load('../text/footer.html'));
         } else {
             // No user is signed in.
-            console.log($('#navbarPlaceholder').load('../text/navbar.html'));
+            console.log($('#navbarPlaceholder').load('../text/navbarBeforeLogin.html'));
             console.log($('#footerPlaceholder').load('../text/footer.html'));
         }
     });
