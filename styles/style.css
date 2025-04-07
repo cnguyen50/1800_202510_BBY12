@@ -9,7 +9,7 @@
     font-family: 'FormaDJRBanner';
     src: url('/fonts/FormaDJRBanner-Medium-Testing.ttf') format('truetype');
     font-weight: bold;
-    font-style: bold;
+    font-style: normal;
 }
 
 :root {
@@ -67,8 +67,6 @@ body::after {
     z-index: 1000;
     opacity: 1;
     transition: opacity 1s ease-out;
-    margin: 0;
-    padding: 0;
 }
 
 #loading-screen::before {
@@ -185,17 +183,23 @@ nav {
 
 /* Container */
 .container {
-    font-weight: bold;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, auto);
     gap: 20px;
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    flex-grow: 1;
-    padding: 20px 0;
+    width: 100%;
+    grid-template-areas:
+        "welcome welcome appointment appointment"
+        "welcome welcome appointment appointment"
+        "medical medical emergency doctor"
+        "footer footer footer footer";
 }
+
+.welcome { grid-area: welcome; }
+.appointment { grid-area: appointment; }
+.emergency-contact { grid-area: emergency; }
+.medical-info { grid-area: medical; }
+.doctor-info { grid-area: doctor; }
 
 .svg-container {
     width: 100%;
@@ -204,68 +208,55 @@ nav {
     overflow: hidden;
 }
 
-.appointment-content, 
-.emergency-content, 
-.doctor-content {
-  padding: 30px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.appointment { height: 220px; }
-.emergency-contact { height: 250px; }
-.doctor-info { height: 280px; }
-
-.appointment, .emergency-contact, .doctor-info {
-    clip-path: none;
-    box-shadow: none;
-  }
-
 .welcome {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    grid-area: welcome;
     background: url('../images/welcome.svg') no-repeat;
     background-size: 100% 100%;
     padding: 4rem 2rem;
-    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
-  }
+}
   
-  .welcome h1 {
-    font-size: 2.5rem; /* Larger text */
-    color: #333; /* Ensure contrast with SVG */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.1); /* Improve readability */
-    margin: 0; /* Remove default margins */
-  }
+.welcome h1 {
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #333;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    margin: 0;
+}
 
 .appointment {
+    grid-area: appointment;
     background: url('placeholder') no-repeat;
     background-size: 100% 100%;
     padding: 30px;
     border-radius: 0 0 20px 20px;
 }
 
-.emergency-contact {
-    background: url('placeholder') no-repeat;
-    background-size: 100% 100%;
-    padding: 40px 30px 30px;
+.medical-info {
+    grid-area: medical;
 }
 
 .doctor-info {
+    grid-area: doctor;
     background: url('placeholder') no-repeat;
     background-size: 100% 100%;
     padding: 50px 30px 30px;
 }
 
+.emergency-contact {
+    grid-area: emergency;
+    background: url('placeholder') no-repeat;
+    background-size: 100% 100%;
+    padding: 40px 30px 30px;
+}
+
 /* Footer */
 .footer {
-    grid-column: 1 / -1;
-    grid-row: 3 / 4;
+    grid-area: footer;
     padding: var(--lwc-varSpacingMedium, var(--lwc-spacingMedium, 1.0rem));
 }
 
@@ -287,7 +278,6 @@ nav {
 
 .footer_left a {
     text-decoration: none;
-    color: var(--accent-clr);
     font-weight: bold;
     transition: color 0.3s ease;
 }
@@ -300,12 +290,12 @@ nav {
     list-style: none;
     display: flex;
     gap: 1rem;
-    color: #333;
+    color: var(--primary-btn);
 }
 
 .footer_right a {
     text-decoration: none;
-    color: #333;
+    color: var(--primary-btn);
     font-weight: bold;
     transition: color 0.3s ease;
 }
@@ -355,9 +345,15 @@ nav {
 /* Mobile version */
 @media (max-width: 768px) {
     .container {
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "welcome"
+            "emergency"
+            "medical"
+            "appointment"
+            "doctor";
+        gap: 15px;
     }
 
     .svg-container {
