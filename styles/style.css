@@ -257,6 +257,130 @@ nav {
     padding: 40px 30px 30px;
 }
 
+/* Cards */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(75, 222, 163, 0.15);
+    transition: all 0.3s ease;
+    background: white;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative; /* For positioning badges */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(75, 222, 163, 0.25);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-header {
+    background-color: rgba(75, 222, 163, 0.1);
+    border-bottom: 1px solid var(--line-clr);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-title {
+    font-family: 'FormaDJRBanner', sans-serif;
+    font-weight: bold;
+    color: var(--text-clr);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-title-border {
+    border-bottom: 2px solid var(--line-clr);
+}
+
+.card-text {
+    font-family: 'FormaDJRBanner', sans-serif;
+    color: var(--text-clr);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.card-badge {
+    background-color: #1E88E5; /* Blue from marathon card */
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.card-icon {
+    margin-right: 10px;
+    color: var(--primary-btn);
+    font-size: 1.1rem;
+}
+
+.card-footer {
+    background-color: rgba(75, 222, 163, 0.05);
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--line-clr);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Specific Card Types */
+.medication-card .card-badge {
+    background-color: #F44336;
+}
+
+.event-card .card-badge {
+    background-color: #1E88E5;
+}
+
+.contact-card .card-badge {
+    background-color: #4CAF50;
+}
+
+.card-status {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.status-item {
+    text-align: center;
+    flex: 1;
+}
+
+.status-label {
+    font-size: 0.8rem;
+    color: #757575;
+}
+
+.status-value {
+    font-weight: bold;
+    color: var(--text-clr);
+    font-size: 1.1rem;
+}
+
+/* Medication */
+#single-medication, 
+#medication-list {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
 /* Footer */
 .footer {
     grid-area: footer;
@@ -359,6 +483,18 @@ nav {
         gap: 15px;
     }
 
+    .card {
+        margin-bottom: 15px;
+    }
+    
+    .card-title {
+        font-size: 1.2rem;
+    }
+    
+    .card-text {
+        font-size: 0.9rem;
+    }
+    
     .svg-container {
         height: auto;
         min-height: 180px;
