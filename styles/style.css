@@ -218,6 +218,7 @@ nav {
     justify-content: center;
     align-items: center;
     position: relative;
+    min-height: 400px;
 }
   
 .welcome h1 {
@@ -234,10 +235,12 @@ nav {
     background-size: 100% 100%;
     padding: 30px;
     border-radius: 0 0 20px 20px;
+    min-height: 400px;
 }
 
 .medical-info {
     grid-area: medical;
+    min-height: 250px;
 }
 
 .doctor-info {
