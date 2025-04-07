@@ -91,7 +91,7 @@ function displayDoctorCards() {
 
     db.collection("users").doc(user.uid).collection("doctors").get()
         .then(snapshot => {
-            const container = document.getElementById("appointments-list");
+            const container = document.getElementById("doctors-list");
             container.innerHTML = ""; // Clear previous results
             
             snapshot.forEach(doc => {
