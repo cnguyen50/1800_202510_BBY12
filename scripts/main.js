@@ -1,3 +1,10 @@
+// Call the function when the page loads (or after user login)
+window.addEventListener('DOMContentLoaded', () => {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) displayDoctorCards();
+    });
+});
+
 // ======================
 // Global Variables
 // ======================
@@ -77,6 +84,31 @@ function initCarousel() {
         ride: 'carousel'
     });
 }
+
+function displayDoctorCards() {
+    const user = firebase.auth().currentUser;
+    if (!user) return;
+
+    db.collection("users").doc(user.uid).collection("doctors").get()
+        .then(snapshot => {
+            const container = document.getElementById("appointments-list");
+            container.innerHTML = ""; // Clear previous results
+            
+            snapshot.forEach(doc => {
+                const doctor = doc.data();
+                const card = document.getElementById("doctorCardTemplate").content.cloneNode(true);
+                
+                card.querySelector("#doctor-name").textContent = doctor.name;
+                card.querySelector("#doctor-specialization").textContent = `Specialization: ${doctor.specialization}`;
+                card.querySelector("#doctor-office").textContent = `Office: ${doctor.office}`;
+                card.querySelector("#doctor-address").textContent = `Address: ${doctor.address}`;
+                card.querySelector("#doctor-email").textContent = doctor.email;
+                
+                container.appendChild(card);
+            });
+        });
+}
+
 
 function showNoImagesMessage(container) {
     container.innerHTML = `
