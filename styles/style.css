@@ -689,6 +689,15 @@ form img:hover {
 
 /* Mobile version */
 @media (max-width: 768px) {
+    .main-page {
+        background-image: 
+            linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        background-size: 20px 20px, 20px 20px;
+        background-position: top left, top left;
+        background-repeat: repeat, repeat;
+    }
+
     .container {
         display: grid;
         grid-template-columns: 1fr;
