@@ -26,7 +26,7 @@ function fetchDoctors(userId) {
         return;
     }
 
-    // Fetch from the USER'S doctors subcollection
+    // Fetch from the user's doctors subcollection
     db.collection("users").doc(userId).collection("doctors").get().then(snapshot => {
         snapshot.forEach(doc => {
             let doctor = doc.data();
@@ -41,8 +41,9 @@ function fetchDoctors(userId) {
 }
 
 // Add a new appointment to Firestore
-function addAppointment(userId) { // Added userId parameter
-    let doctorName = document.getElementById("doctor-name").value;
+function addAppointment(userId) {
+    let doctorName = document.getElementById("doctor-name").selectedOptions[0].text;
+    let doctorId = document.getElementById("doctor-name").value;
     let appointmentDate = document.getElementById("appointment-date").value;
     let appointmentTime = document.getElementById("appointment-time").value;
 
@@ -57,7 +58,8 @@ function addAppointment(userId) { // Added userId parameter
 
     // Store appointment in the user's appointments subcollection
     db.collection("users").doc(userId).collection("appointments").add({
-        doctorId: doctorName,
+        doctorName: doctorName,
+        doctorId: doctorId,
         appointmentTime: appointmentDateTime,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(() => {
