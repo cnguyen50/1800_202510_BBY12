@@ -37,36 +37,40 @@
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-
+    <div class="medical-bg"></div>
     <nav id="navbarPlaceholder"></nav>
-
-    <h1>Medical History</h1>
-    <div class="container">
-        <h1>Upload images </h1>
-        <form>
-            <div id="loader">
-                <div class="container py-3">
-                    <input type="file" id="mypic-input1" accept="image/*" />
-                    <img id="mypic-goes-here1" width=100 height=100 />
-                    <input type="file" id="mypic-input2" accept="image/*" />
-                    <img id="mypic-goes-here2" width=100 height=100 />
+    <main class="flex-grow-1 container-md py-4 position-relative">
+        <div class="text-center mb-5">
+            <h1 class="medication-main-title">Medical History</h1>
+            <p class="medication-subtitle">Upload and view your records</p>
+        </div>
+        <div class="card p-4 mx-auto" style="max-width: 800px;">
+            <form>
+                <div id="loader" class="d-flex flex-column gap-3">
+                    <div class="d-flex flex-wrap gap-4 justify-content-center">
+                        <div class="text-center">
+                            <input type="file" id="mypic-input1" accept="image/*" />
+                            <img id="mypic-goes-here1" width=100 height=100 />
+                        </div>
+                        <div class="text-center">
+                            <input type="file" id="mypic-input2" accept="image/*" />
+                            <img id="mypic-goes-here2" width=100 height=100 />
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-4">
+                        <button type="button" class="btn custom-btn" onclick="saveImages()">Save</button>
+                    </div>
                 </div>
-                <div class="d-flex mt-5">
-                    <button type="button" class="btn custom-btn" onclick="saveImages()">Save</button>
-                </div>
-                <!-- Add this template (hidden) -->
+            </form>
+        </div>
+    </main>
 
-
-
-        </form>
-    </div>
-
-    <footer id="footerPlaceholder"></footer>
+    <footer id="footerPlaceholder" class="mt-auto"></footer>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->

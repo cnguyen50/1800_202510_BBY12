@@ -32,29 +32,32 @@
 
 <body>
     <!-- Doctor Card Template for Listing -->
-    <template id="doctorCardTemplate">
-        <div> 
-            <div class="card py-2 mx-2"> 
-                <div class="card-body"> 
-                    <h5 class="card-title" id="doctor-name">Doctor's Name</h5>
-                    <p id="doctor-specialization">Specialization: Placeholder</p>
-                    <p id="doctor-office">Office: Placeholder</p>
-                    <p id="doctor-address">Address: Placeholder</p>
-                    <a href="#" id="doctor-email">Email</a>
-                    </div>
-            </div>
-        </div>
-    </template>
-    
+    <div class="doctor-bg"></div>
     <!-- Navigation Bar -->
     <nav id="navbarPlaceholder"></nav>
-
-    <div class="container mt-4">
-        <h1>Doctor's Information</h1>
-
+    <main class="flex-grow-1 container py-4 position-relative">
+        <div class="text-center mb-5">
+            <h1 class="doctor-main-title">Doctor's Information</h1>
+            <p class="doctor-subtitle">Your healthcare providers</p>
+        </div>
+        <template id="doctorCardTemplate">
+                <div class="card py-2 mx-2"> 
+                    <div class="card-body doctor-card h-100"> 
+                        <div class="card-body">
+                            <h5 class="card-title doctor-name" id="doctor-name">Doctor's Name</h5>
+                            <p id="doctor-specialization">Specialization: Placeholder</p>
+                            <p id="doctor-office">Office: Placeholder</p>
+                            <p id="doctor-address">Address: Placeholder</p>
+                            <a href="#" id="doctor-email">Email</a>
+                        </div>
+                    </div>
+                </div>
+        </template>
         <!-- Section for Single Doctor Details (if docID exists) -->
-        <div id="single-doctor-info" class="my-4">
-            <h2 id="doctor-name"></h2>
+        <div id="single-doctor-info">
+            <div class="doctor-card-header">
+                <h2 id="doctor-name"></h2>
+            </div>
             <p id="doctor-specialization"></p>
             <p id="doctor-office"></p>
             <p id="doctor-address"></p>
@@ -66,12 +69,9 @@
         <div class="text-center m-4"> 
             <a href="addDoctor.html" class="btn custom-btn">Add New Doctor</a>
         </div>
-        
-    </div>
-
-
+    </main>
     <!-- Footer -->
-    <footer id="footerPlaceholder"></footer>
+    <footer id="footerPlaceholder" class="mt-auto"></footer>
 
     <!-- JavaScript Scripts -->
     <script src="../scripts/firebaseAPI_Team12.js"></script>

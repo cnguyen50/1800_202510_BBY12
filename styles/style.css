@@ -33,9 +33,11 @@ body {
     background-color: #fff;
     background-image: 
       linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
-    background-position: top left;
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px), 
+      url('../images/doctor-bg-main.svg');
+      background-size: 20px 20px, 20px 20px, cover; /* Grid pattern and SVG overlay */
+      background-position: top left, top left, center center; 
+      background-repeat: repeat, repeat, no-repeat; /* Repeat grid and not SVG */
 }
   
 body::after {
@@ -240,14 +242,16 @@ nav {
 
 .medical-info {
     grid-area: medical;
-    min-height: 250px;
+    min-height: 200px;
 }
 
 .doctor-info {
     grid-area: doctor;
-    background: url('placeholder') no-repeat;
-    background-size: 100% 100%;
+    background: url('../images/doctor-bg.svg') no-repeat;
+    background-size: cover;
+    background-position: center;
     padding: 50px 30px 30px;
+    position: relative;
 }
 
 .emergency-contact {
@@ -262,11 +266,11 @@ nav {
     border: none;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(75, 222, 163, 0.15);
-    transition: all 0.3s ease;
-    background: white;
+    background: rgba(255, 255, 255, 0.65);
     overflow: hidden;
     margin-bottom: 20px;
-    position: relative; /* For positioning badges */
+    position: relative;
+    z-index: 2;
 }
 
 .card:hover {
@@ -310,18 +314,6 @@ nav {
     align-items: center;
 }
 
-.card-badge {
-    background-color: #1E88E5; /* Blue from marathon card */
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-}
-
 .card-icon {
     margin-right: 10px;
     color: var(--primary-btn);
@@ -335,19 +327,6 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-/* Specific Card Types */
-.medication-card .card-badge {
-    background-color: #F44336;
-}
-
-.event-card .card-badge {
-    background-color: #1E88E5;
-}
-
-.contact-card .card-badge {
-    background-color: #4CAF50;
 }
 
 .card-status {
@@ -380,6 +359,155 @@ nav {
     margin-right: auto;
     padding: 0 20px;
 }
+
+.medication-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('../images/medication-bg.svg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.52);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(2px);
+}
+
+.medication-main-title {
+    font-family: 'FormaDJRBanner', sans-serif;
+    font-weight: bold;
+    color: var(--text-clr);
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.medication-main-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-btn);
+}
+
+.medication-subtitle {
+    color: var(--line-clr);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* DoctorInfo */
+.doctor-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('../images/doctor-bg.svg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+}
+
+.doctor-main-title {
+    font-family: 'FormaDJRBanner', sans-serif;
+    font-weight: bold;
+    color: var(--text-clr);
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.doctor-main-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-btn);
+}
+
+.doctor-subtitle {
+    color: var(--line-clr);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.doctor-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+#single-doctor-info,
+#single-doctor-info * {
+    margin: 0;
+    padding: 0;
+}
+
+/* Medical */
+.medical-bg {
+    background: url('../images/medical-bg.svg') no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 100%;
+    opacity: 0.20;
+    z-index: 0;
+}
+
+.medication-main-title {
+    font-size: 2.5rem;
+    color: var(--text-clr);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.medication-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+form input[type="file"] {
+    display: block;
+    margin: 1rem auto;
+    color: var(--text-clr);
+    font-weight: bold;
+    font-family: 'FormaDJRBanner', sans-serif;
+}
+
+form img {
+    border-radius: 12px;
+    border: 2px dashed var(--primary-btn);
+    padding: 5px;
+    background-color: white;
+    transition: transform 0.3s ease;
+}
+
+form img:hover {
+    transform: scale(1.05);
+}
+
 
 /* Footer */
 .footer {
@@ -494,7 +622,7 @@ nav {
     .card-text {
         font-size: 0.9rem;
     }
-    
+
     .svg-container {
         height: auto;
         min-height: 180px;
@@ -517,7 +645,6 @@ nav {
         max-height: 400px;
     }
 
-    /* Add more space between sections */
     .container > div {
         margin-bottom: 20px;
     }
@@ -526,7 +653,16 @@ nav {
         font-size: 1.2em;
     }
 
-    .scrollable-content {
-        max-height: 250px;
+    /* Mobile DoctorInfo */
+    .doctor-main-title {
+        font-size: 2rem;
+    }
+    
+    .doctor-card {
+        padding: 1.5rem;
+    }
+    
+    .doctor-list-title {
+        font-size: 1.5rem;
     }
 }
