@@ -48,6 +48,33 @@ body {
     background-position: top left, top left, center center;
     background-repeat: repeat, repeat, no-repeat;
 }
+
+.main-title {
+    font-family: 'FormaDJRBanner', sans-serif;
+    font-weight: bold;
+    color: var(--text-clr);
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.main-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-btn);
+}
+
+.subtitle {
+    color: var(--line-clr);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
   
 /* Loading Screen */
 #loading-screen {
@@ -357,16 +384,6 @@ nav {
 }
 
 /* Appointment */
-.appointment-main-title {
-    font-family: 'FormaDJRBanner', sans-serif;
-    font-weight: bold;
-    color: var(--text-clr);
-    font-size: 2.5rem;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 15px;
-}
-
 .appointment-bg {
     position: fixed;
     top: 0;
@@ -380,21 +397,67 @@ nav {
     opacity: 0.15;
 }
 
-.appointment-main-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: var(--primary-btn);
+/* Style for each appointment card*/
+.appointment-card {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    background-color: #fff;
 }
 
-.appointment-subtitle {
-    color: var(--line-clr);
+.appointment-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-clr);
+}
+
+.appointment-doctor {
     font-size: 1.1rem;
-    margin-top: 0.5rem;
+    color: var(--text-clr);
+}
+
+.appointment-date,
+.appointment-time {
+    font-size: 1rem;
+    color: #555;
+    color: var(--text-clr);
+}
+
+.appointment-card {
+    padding: 1.5rem;
+}
+
+.next-appointment-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.emger-card-text {
+    font-family: 'FormaDJRBanner', sans-serif;
+    color: var(--text-clr);
+    margin-bottom: 0.8rem;
+}
+
+.index-card-text {
+    font-family: 'FormaDJRBanner', sans-serif;
+    color: var(--text-clr);
+    margin-bottom: 0.8rem;
+}
+
+.index-card-title {
+    font-family: 'FormaDJRBanner', sans-serif;
+    font-weight: bold;
+    color: var(--text-clr);
+    margin-bottom: 1.0rem;
+}
+
+.index-card-body {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgb(160, 160, 160);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 /* Medication */
@@ -428,33 +491,6 @@ main {
     backdrop-filter: blur(2px);
 }
 
-.medication-main-title {
-    font-family: 'FormaDJRBanner', sans-serif;
-    font-weight: bold;
-    color: var(--text-clr);
-    font-size: 2.5rem;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 15px;
-}
-
-.medication-main-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: var(--primary-btn);
-}
-
-.medication-subtitle {
-    color: var(--line-clr);
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-}
-
 /* DoctorInfo */
 .doctor-bg {
     position: fixed;
@@ -467,33 +503,6 @@ main {
     background-size: cover;
     background-position: center;
     opacity: 0.1;
-}
-
-.doctor-main-title {
-    font-family: 'FormaDJRBanner', sans-serif;
-    font-weight: bold;
-    color: var(--text-clr);
-    font-size: 2.5rem;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 15px;
-}
-
-.doctor-main-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: var(--primary-btn);
-}
-
-.doctor-subtitle {
-    color: var(--line-clr);
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
 }
 
 .doctor-card-header {
@@ -520,18 +529,6 @@ main {
     height: 100%;
     opacity: 0.20;
     z-index: 0;
-}
-
-.medication-main-title {
-    font-size: 2.5rem;
-    color: var(--text-clr);
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.medication-subtitle {
-    font-size: 1.1rem;
-    color: #6c757d;
 }
 
 form input[type="file"] {
@@ -650,6 +647,21 @@ form img:hover {
     font-size: 1.5em;
 }
 
+/* Remaining add/edit pages */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.form-container {
+    margin-top: 100px;
+}
+
 /* Mobile version */
 @media (max-width: 768px) {
     .container {
@@ -712,7 +724,7 @@ form img:hover {
     }
 
     /* Mobile DoctorInfo */
-    .doctor-main-title {
+    .main-title {
         font-size: 2rem;
     }
     
@@ -723,67 +735,8 @@ form img:hover {
     .doctor-list-title {
         font-size: 1.5rem;
     }
-}
 
-/* Style for each appointment card */
-.appointment-card {
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    background-color: #fff;
-}
-  /* Inline layout */
-.appointment-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--text-clr);
-}
-
-.appointment-doctor {
-    font-size: 1.1rem;
-    color: var(--text-clr);
-}
-
-.appointment-date,
-.appointment-time {
-    font-size: 1rem;
-    color: #555;
-    color: var(--text-clr);
-}
-
-.appointment-card {
-    padding: 1.5rem;
-}
-
-.next-appointment-button-wrapper {
-    display: flex;
-    justify-content: space-between;
-}
-
-.emger-card-text {
-    font-family: 'FormaDJRBanner', sans-serif;
-    color: var(--text-clr);
-    margin-bottom: 0.8rem;
-}
-
-.index-card-text {
-    font-family: 'FormaDJRBanner', sans-serif;
-    color: var(--text-clr);
-    margin-bottom: 0.8rem;
-}
-
-.index-card-title {
-    font-family: 'FormaDJRBanner', sans-serif;
-    font-weight: bold;
-    color: var(--text-clr);
-    margin-bottom: 1.0rem;
-}
-
-.index-card-body {
-    padding: 1.5rem;
-    border-bottom: 1px solid rgb(160, 160, 160);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    .form-container {
+        margin-top: 0px;
+    }
 }

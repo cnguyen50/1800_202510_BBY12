@@ -46,33 +46,33 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-
-    <nav id="navbarPlaceholder"></nav>
-
-    <div class="container mt-4">
-        <h1>Edit Appointment</h1>
-        <form id="edit-appointment-form">
-            <div class="mb-3">
-                <label for="doctor-name" class="form-label">Doctor</label>
-                <select id="doctor-name" class="form-control"></select>
+    <div class="page-wrapper d-flex flex-column min-vh-100">
+        <nav id="navbarPlaceholder"></nav>
+        <main class="flex-grow-1 container py-4">
+            <div class="text-center mb-5">
+                <h1 class="main-title">Edit Appointment</h1>
             </div>
-            <div class="mb-3">
-                <label for="appointment-date" class="form-label">Date</label>
-                <input type="date" id="appointment-date" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="appointment-time" class="form-label">Time</label>
-                <input type="time" id="appointment-time" class="form-control">
-            </div>
-            <div id="buttonWrapper">
-                <button type="button" id="save-button" class="btn custom-btn">Save</button>
-                <button type="button" id="delete-button" class="btn custom-btn">Delete</button>
-            </div>
-        </form>
+            <form id="edit-appointment-form" class="form-container">
+                <div class="mb-3">
+                    <label for="doctor-name" class="form-label">Doctor</label>
+                    <select id="doctor-name" class="form-control"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="appointment-date" class="form-label">Date</label>
+                    <input type="date" id="appointment-date" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="appointment-time" class="form-label">Time</label>
+                    <input type="time" id="appointment-time" class="form-control">
+                </div>
+                <div id="buttonWrapper">
+                    <button type="button" id="save-button" class="btn custom-btn">Save</button>
+                    <button type="button" id="delete-button" class="btn custom-btn">Delete</button>
+                </div>
+            </form>
+        </main>
+        <footer id="footerPlaceholder"></footer>
     </div>
-
-
-    <footer id="footerPlaceholder"></footer>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->

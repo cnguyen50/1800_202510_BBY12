@@ -46,35 +46,31 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-
-    <nav id="navbarPlaceholder"></nav>
-
-    <div class="container mt-4">
-        <h1>Edit Medications</h1>
-        <form id="edit-medication-form">
-
-            <div class="mb-3">
-                <label for="medication-name" class="form-label">Medication Name</label>
+    <div class="page-wrapper d-flex flex-column min-vh-100">
+        <nav id="navbarPlaceholder"></nav>
+        <main class="flex-grow-1 container py-4">
+            <div class="text-center mb-5">
+                <h1 class="main-title">Edit Medications</h1>
+            </div>
+            <form id="edit-medication-form" class="form-container">
+                <div class="mb-3">
+                        <label for="medication-name" class="form-label">Medication Name</label>
                 <input type="text" class="form-control" id="medication-name">
-            </div>
-
-            <div class="mb-3">
-                <label for="medication-dose" class="form-label">Medication Dose</label>
-                <input type="text" class="form-control" id="medication-dose">
-            </div>
-
-            <div class="mb-3">
-                <label for="medication-instructions" class="form-label">Medication Instructions</label>
-                <input type="text" class="form-control" id="medication-instructions">
-            </div>
-
-            <button type="button" id="save-button" class="btn custom-btn">Save</button>
-            <button type="button" id="delete-button" class="btn custom-btn">Delete</button>
-        </form>
+                </div>
+                <div class="mb-3">
+                    <label for="medication-dose" class="form-label">Medication Dose</label>
+                    <input type="text" class="form-control" id="medication-dose">
+                </div>
+                <div class="mb-3">
+                    <label for="medication-instructions" class="form-label">Medication Instructions</label>
+                    <input type="text" class="form-control" id="medication-instructions">
+                </div>
+                    <button type="button" id="save-button" class="btn custom-btn">Save</button>
+                    <button type="button" id="delete-button" class="btn custom-btn">Delete</button>
+            </form>
+        </main>
+        <footer id="footerPlaceholder"></footer>
     </div>
-
-    <footer id="footerPlaceholder"></footer>
-
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->

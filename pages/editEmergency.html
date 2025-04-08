@@ -46,39 +46,38 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-
-    <nav id="navbarPlaceholder"></nav>
-
-    <div class="container mt-4">
-        <h1>Edit Emergency Contact Information</h1>
-        <form id="edit-emergency-form">
-            <div class="mb-3">
-                <label for="contact-name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="contact-name">
+    <div class="page-wrapper d-flex flex-column min-vh-100">
+        <nav id="navbarPlaceholder"></nav>
+        <main class="flex-grow-1 container py-4">
+            <div class="text-center mb-5">
+                <h1 class="main-title">Edit Emergency Contact Information</h1>
             </div>
-            <div class="mb-3">
-                <label for="contact-relationship" class="form-label">Relationship</label>
-                <input type="text" class="form-control" id="contact-relationship">
-            </div>
-            <div class="mb-3">
-                <label for="contact-phone" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="contact-phone">
-            </div>
-            <div class="mb-3">
-                <label for="contact-address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="contact-address">
-            </div>
-            <div class="mb-3">
-                <label for="contact-email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="contact-email">
-            </div>
-            <button type="button" id="save-button" class="btn custom-btn">Save</button>
-        </form>
+            <form id="edit-emergency-form" class="form-container">
+                <div class="mb-3">
+                    <label for="contact-name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="contact-name">
+                </div>
+                <div class="mb-3">
+                    <label for="contact-relationship" class="form-label">Relationship</label>
+                    <input type="text" class="form-control" id="contact-relationship">
+                </div>
+                <div class="mb-3">
+                    <label for="contact-phone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="contact-phone">
+                </div>
+                <div class="mb-3">
+                    <label for="contact-address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="contact-address">
+                </div>
+                <div class="mb-3">
+                    <label for="contact-email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="contact-email">
+                </div>
+                <button type="button" id="save-button" class="btn custom-btn">Save</button>
+            </form>
+        </main>
+        <footer id="footerPlaceholder"></footer>
     </div>
-
-
-    <footer id="footerPlaceholder"></footer>
-
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
