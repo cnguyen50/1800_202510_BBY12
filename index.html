@@ -83,6 +83,35 @@
         </div>
     </template>
 
+    <template id="doctorCardTemplate">
+        <div> 
+            <div class="card py-2 mx-2"> 
+                <div class="card-body"> 
+                    <h5 class="card-title" id="doctor-name"></h5>
+                    <p class="card-text" id="doctor-specialization"></p>
+                    <p class="card-text" id="doctor-office"></p>
+                    <p class="card-text" id="doctor-address"></p>
+                    <a class="card-text" id="doctor-email"></a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    
+    <template id="appointmentCardTemplate">
+        <div> 
+            <div class="card py-2 mx-2"> 
+                <div class="card-body"> 
+                    <h5 class="card-title" id="doctor-name"></h5>
+                    <p class="card-text" id="appointment-date"></p>
+                    <p class="card-text" id="appointment-time"></p>
+                    <p class="card-text" id="doctor-address"></p>
+                    <a class="card-text" id="doctor-email"></a>
+                </div>
+            </div>
+        </div>
+    </template>
+
     <div class="container mt-4">
         <!-- Welcome Message -->
         <div class="welcome text-center p-4">
@@ -94,6 +123,7 @@
             <h2>Next Appointment</h2>
             <a href="/pages/appointment.html" class="btn custom-btn-white mt-2">View More</a>
             <a href="/pages/addAppointment.html" class="btn custom-btn mt-2">Add</a>
+            <div id="appointments-list"></div>
         </div>
 
         <!-- Medical Information -->
@@ -119,7 +149,9 @@
         <div class="doctor-info card p-4 text-center">
             <h2>Doctors</h2>
             <p><span id="next-doctor"></span></p>
-            <a href="/pages/doctorInfo.html" class="btn custom-btn">View More</a>
+            <a href="/pages/doctorInfo.html" class="btn custom-btn-white mt-2">View More</a>
+            <a href="/pages/addDoctor.html" class="btn custom-btn mt-2">Add</a>
+            <div id="doctors-list" class="mt-4"></div>
         </div>
 
         <!-- Emergency Contact -->
