@@ -4,29 +4,43 @@ document.getElementById("add-appointment-btn").onclick = function() {
 };
 
 function fetchAppointments(callback) {
-    db.collection("appointment").get().then(snapshot => {
-        let appointments = [];
-        snapshot.forEach(doc => {
-            let data = doc.data();
-            data.id = doc.id; // Store document ID
-            appointments.push(data);
-        });
-        callback(appointments);  // Pass appointments data to the callback function
-    }).catch(error => {
-        console.error("Error fetching appointments:", error);
-    });
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            db.collection("users").doc(user.uid).collection("appointments")
+            .get().then(snapshot => {
+                let appointments = [];
+                snapshot.forEach(doc => {
+                    let data = doc.data();
+                    data.id = doc.id; // Store document ID
+                    appointments.push(data);
+                });
+                callback(appointments);  // Pass appointments data to the callback function
+            }).catch(error => {
+                console.error("Error fetching appointments:", error);
+            });
+        } else {
+            console.log("user not logged in to fetch appointments")
+        }
+    })
 }
 
 function fetchDoctorInfo(doctorID, callback) {
-    db.collection("doctors").doc(doctorID).get().then(doc => {
-        if (doc.exists) {
-            callback(doc.data());  // Pass doctor data to callback function
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            db.collection("users").doc(user.uid).collection("doctors").doc(doctorID)
+            .get().then(doc => {
+                if (doc.exists) {
+                    callback(doc.data());  // Pass doctor data to callback function
+                } else {
+                    console.log("No doctor found with ID:", doctorID);
+                }
+            }).catch(error => {
+                console.error("Error fetching doctor information: ", error);
+            });
         } else {
-            console.log("No doctor found with ID:", doctorID);
+            console.log("user not logged in to fetch doctor infor")
         }
-    }).catch(error => {
-        console.error("Error fetching doctor information: ", error);
-    });
+    })
 }
 
 // Create and append an appointment card
@@ -35,7 +49,7 @@ function createAppointmentCard(appointment) {
     let newCard = cardTemplate.content.cloneNode(true);
 
     // Get doctor data using doctorID from the appointment
-    fetchDoctorInfo(appointment.doctorID, doctorData => {
+    fetchDoctorInfo(appointment.doctorId, doctorData => {
         // Convert Firestore Timestamp to JavaScript Date object
         let appointmentDate = appointment.appointmentTime.toDate(); // Convert Timestamp to Date
 
