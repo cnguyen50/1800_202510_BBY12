@@ -685,13 +685,13 @@ form img:hover {
     .svg-container {
         height: auto;
         min-height: 180px;
-      }
-      
-      .appointment-content, 
-      .emergency-content, 
-      .doctor-content {
+    }
+    
+    .appointment-content, 
+    .emergency-content, 
+    .doctor-content {
         padding: 20px;
-      }
+    }
 
     .appointment, .doctor-info, .emergency-contact, .welcome, .scrollable-content {
         width: 100%;
@@ -740,18 +740,20 @@ form img:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: var(--text-clr);
 }
 
 .appointment-doctor {
     font-size: 1.1rem;
+    color: var(--text-clr);
 }
 
 .appointment-date,
 .appointment-time {
     font-size: 1rem;
     color: #555;
+    color: var(--text-clr);
 }
-
 
 .appointment-card {
     padding: 1.5rem;
