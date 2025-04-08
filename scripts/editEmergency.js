@@ -7,34 +7,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Fetching emergency contact with ID:", emergencyID);
 
-    db.collection("emergency").doc(emergencyID).get()
-        .then((doc) => {
-            if (doc.exists) {
-                let emergencyData = doc.data();
-                console.log("Emergency contact data:", emergencyData);
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            db.collection("users").doc(user.uid).collection("emergency").doc(emergencyID).get()
+            .then((doc) => {
+                if (doc.exists) {
+                    let emergencyData = doc.data();
+                    console.log("Emergency contact data:", emergencyData);
 
-                // Populate fields if they exist
-                [
-                    { id: "contact-name", key: "Name" },
-                    { id: "contact-relationship", key: "Relationship" },
-                    { id: "contact-phone", key: "Phone Number" },
-                    { id: "contact-address", key: "Address" },
-                    { id: "contact-email", key: "Email" }
-                ].forEach(({ id, key }) => {
-                    let input = document.getElementById(id);
-                    if (input) {
-                        input.value = emergencyData[key] || "";
-                    } else {
-                        console.error(`Element with ID '${id}' not found!`);
-                    }
-                });
-            } else {
-                console.error("Emergency contact not found!");
-            }
-        })
-        .catch(error => console.error("Error fetching emergency contact:", error));
+                    // Populate fields if they exist
+                    [
+                        { id: "contact-name", key: "Name" },
+                        { id: "contact-relationship", key: "Relationship" },
+                        { id: "contact-phone", key: "Phone Number" },
+                        { id: "contact-address", key: "Address" },
+                        { id: "contact-email", key: "Email" }
+                    ].forEach(({ id, key }) => {
+                        let input = document.getElementById(id);
+                        if (input) {
+                            input.value = emergencyData[key] || "";
+                        } else {
+                            console.error(`Element with ID '${id}' not found!`);
+                        }
+                    });
+                } else {
+                    console.error("Emergency contact not found!");
+                }
+            })
+            .catch(error => console.error("Error fetching emergency contact:", error));
+        }
+    });
 });
-
 // Function to save the edited emergency contact information
 function saveEmergencyInfo() {
     let emergencyID = localStorage.getItem("selectedEmergencyID");
@@ -56,9 +59,10 @@ function saveEmergencyInfo() {
 
     var user = firebase.auth().currentUser;
     if (user) {
-        db.collection("emergency").doc(emergencyID).update(contactData)
+        db.collection("users").doc(user.uid).collection("emergency").doc(emergencyID).update(contactData)
             .then(() => {
                 console.log("Emergency contact information updated successfully!");
+                window.location.href = "/index.html";
                 // Optionally redirect or give feedback to the user
             })
             .catch(error => console.error("Error updating emergency contact information: ", error));
