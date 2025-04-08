@@ -45,30 +45,25 @@
     <div class="medication-bg"></div>
     <nav id="navbarPlaceholder"></nav>
     <main class="flex-grow-1 container py-4">
-        <div class="text-center mb-5">
+        <div class="text-center">
             <h1 class="main-title">Medication</h1>
             <p class="subtitle">Manage your dosages</p>
         </div>
-        <!-- Doctor Card Template for Listing -->
         <template id="medicationCardTemplate">
-            <div>
-                <div class="card py-2 mx-2">
-                    <div class="card-body">
-                        <h5 class="card-title" id="medication-name">Medication</h5>
-                        <p id="medication-dose">Dosage: Placeholder</p>
-                        <p id="medication-instructions">Instructions: Placeholder</p>
-                    </div>
+            <div class="card py-2 mx-2">
+                <div class="card-body h-10"">
+                    <h5 class="card-title" id="medication-name">Medication</h5>
+                    <p id="medication-dose">Dosage: Placeholder</p>
+                    <p id="medication-instructions">Instructions: Placeholder</p>
                 </div>
             </div>
         </template>
-        <div id="single-medication" class="my-4">
+        <div id="single-medication">
             <h2 id="medication-name"></h2>
             <p id="medication-dose"></p>
             <p id="medication-instructions"></p>
         </div>
-
         <!-- Section for Listing All Medications-->
-        <!-- <h2 class="mt-5">List of Medications</h2> -->
         <div id="medication-list"></div>
         <div class="text-center m-4"> 
             <a href="addMedication.html" class="btn custom-btn">Add New Medication</a>

@@ -28,28 +28,30 @@
 </head>
 
 <body>
-    <nav id="navbarPlaceholder"></nav>
-
-    <div class="container mt-4">
-        <h1>Add New Medication</h1> 
-        <form id="add-medication-form"> 
-            <div class="mb-3">
-                <label for="medication-name" class="form-label">Medication Name</label>
-                <input type="text" id="medication-name" class="form-control" placeholder="e.g., Metformin" required>
+    <div class="page-wrapper d-flex flex-column min-vh-100">
+        <nav id="navbarPlaceholder"></nav>
+        <main class="flex-grow-1 container py-4">
+            <div class="text-center mb-5">
+                <h1 class="main-title">Add New Medication</h1> 
             </div>
-            <div class="mb-3">
-                <label for="medication-dose" class="form-label">Dosage</label>
-                <input type="text" id="medication-dose" class="form-control" placeholder="e.g., 50mg" required>
-            </div>
-            <div class="mb-3">
-                <label for="medication-instructions" class="form-label">Instructions</label>
-                <input type="text" id="medication-instructions" class="form-control" placeholder="e.g., Take one tablet daily with food" required>
+            <form id="add-medication-form" class="form-container"> 
+                <div class="mb-3">
+                    <label for="medication-name" class="form-label">Medication Name</label>
+                    <input type="text" id="medication-name" class="form-control" placeholder="e.g., Metformin" required>
                 </div>
-            <button type="button" id="add-medication-button" class="btn custom-btn">Add Medication</button>
+                <div class="mb-3">
+                    <label for="medication-dose" class="form-label">Dosage</label>
+                    <input type="text" id="medication-dose" class="form-control" placeholder="e.g., 50mg" required>
+                </div>
+                <div class="mb-3">
+                    <label for="medication-instructions" class="form-label">Instructions</label>
+                    <input type="text" id="medication-instructions" class="form-control" placeholder="e.g., Take one tablet daily with food" required>
+                </div>
+                <button type="button" id="add-medication-button" class="btn custom-btn">Add Medication</button>
         </form>
-    </div>
-
+    </main>
     <footer id="footerPlaceholder"></footer>
+    </div>
 
     <script src="../scripts/firebaseAPI_Team12.js"></script>
     <script src="../scripts/script.js"></script>

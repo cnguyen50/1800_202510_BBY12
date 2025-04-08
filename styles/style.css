@@ -59,7 +59,28 @@ body {
     padding-bottom: 15px;
 }
 
+.main-title-index {
+    font-family: 'FormaDJRBanner', sans-serif;
+    font-weight: bold;
+    color: var(--text-clr);
+    font-size: 1.8rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
 .main-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-btn);
+}
+
+.main-title-index::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -136,13 +157,12 @@ body {
 
 /* Navigation bar */
 nav {
-    background: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
     padding: 15px;
     text-align: center;
     position: sticky;
     top: 0;
-    z-index: 10;
-    border: none;
+    z-index: 100;
     width: 100%;
 }
   
@@ -551,6 +571,11 @@ form img:hover {
     transform: scale(1.05);
 }
 
+/* Medication */
+#single-medication, 
+#medication-list {
+    padding: 0;
+}
 
 /* Footer */
 .footer {
@@ -659,7 +684,7 @@ form img:hover {
 }
 
 .form-container {
-    margin-top: 100px;
+    padding: 10px;
 }
 
 /* Mobile version */
@@ -720,12 +745,13 @@ form img:hover {
     }
 
     .welcome h1 {
-        font-size: 1.2em;
+        font-size: 2.4em;
     }
 
     /* Mobile DoctorInfo */
-    .main-title {
-        font-size: 2rem;
+    .main-title,
+    .main-title-index {
+        font-size: 1.8rem;
     }
     
     .doctor-card {

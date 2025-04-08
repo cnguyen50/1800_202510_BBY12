@@ -51,25 +51,25 @@
             <div id="contacts-list"></div> 
         </div>
 
-        <!-- Hidden Card Template (this will be cloned for each appointment) -->
-        <div id="appointment-list"></div>
-        <template id="appointmentCardTemplate">
-            <div>
-                <div class="card py-2 mx-2">
-                    <div class="card-body">
-                        <h5 class="card-title" id="doctor-name"></h5>
-                        <p class="card-text" id="appointment-date"></p>
-                        <p class="card-text" id="appointment-time"></p>
-                        <p class="card-text" id="doctor-address"></p>
-                        <a href="#" id="doctor-email" class="btn custom-btn-white">Email</a>
-                        <button class="edit-button btn custom-btn mt-2">Edit</button>
-                    </div>
+    <!-- Hidden Card Template (this will be cloned for each appointment) -->
+    <div id="appointment-list"></div>
+    <template id="appointmentCardTemplate">
+        <div>
+            <div class="card py-2 mx-2">
+                <div class="card-body">
+                    <h5 class="card-title" id="doctor-name"></h5>
+                    <p class="card-text" id="appointment-date"></p>
+                    <p class="card-text" id="appointment-time"></p>
+                    <p class="card-text" id="doctor-address"></p>
+                    <a href="#" id="doctor-email" class="btn custom-btn-white">Email</a>
+                    <button class="edit-button btn custom-btn mt-2">Edit</button>
                 </div>
             </div>
-        </template>    
-        <div class="text-center m-4">
-            <button id="add-appointment-btn" class="btn custom-btn">Add New Appointment</button>
         </div>
+    </template>    
+    <div class="text-center mt-4">
+        <button id="add-appointment-btn" class="btn custom-btn">Add New Appointment</button>
+    </div>
     </main>
     <footer id="footerPlaceholder" class="mt-auto"></footer>
     <!---------------------------------------------->
