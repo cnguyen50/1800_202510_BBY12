@@ -12,9 +12,15 @@ function addMedication() {
     let medDose = document.getElementById("medication-dose").value;
     let medInstructions = document.getElementById("medication-instructions").value;
 
-    // Form validation: check if fields are filled
+    // Form validation, check if fields are filled
     if (!medName || !medDose || !medInstructions) {
-        alert("Please fill in all medication fields.");
+        Swal.fire({
+            title: "Error Adding Medication",
+            text: "Please fill in all medication fields.",
+            icon: "error",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#4BDEA3"
+        });
         return;
     }
 
@@ -22,7 +28,7 @@ function addMedication() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             // User is signed in, proceed to add the medication
-            console.log("Adding medication for user:", user.uid);
+            // console.log("Adding medication for user:", user.uid);
 
             db.collection("users").doc(user.uid).collection("medications").add({
                 name: medName,
@@ -30,12 +36,30 @@ function addMedication() {
                 instructions: medInstructions,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
             }).then(() => {
-                console.log("Medication successfully added!");
-                alert("Medication added!");
+                return Swal.fire({
+                    title: "Medication Added!",
+                    icon: "success",
+                    confirmButtonColor: "#4BDEA3",
+                    allowOutsideClick: false,
+                    showConfirmButton: true,
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+            }).then(() => {
                 window.location.href = "../pages/medication.html";
             }).catch(error => {
                 console.error("Error adding medication: ", error);
-                alert("Error adding medication. Please try again.");
+                Swal.fire({
+                    title: "Error adding medication",
+                    text: "Please try again.",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    confirmButtonColor: "#4BDEA3"
+                });
             });
 
         } else {

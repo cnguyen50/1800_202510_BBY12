@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return; 
     }
 
-    console.log(medicationID);
+    // console.log(medicationID);
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 let medicationDose = document.getElementById("medication-dose").value;
                 let medicationInstructions = document.getElementById("medication-instructions").value;
         
-                console.log(medicationName, medicationDose, medicationInstructions);
+                // console.log(medicationName, medicationDose, medicationInstructions);
         
                     // Update the medication document with the new data
                     medicationRef.update({
@@ -27,7 +27,20 @@ document.addEventListener("DOMContentLoaded", function() {
                         instructions: medicationInstructions,
                         updatedAt: firebase.firestore.FieldValue.serverTimestamp() 
                     }).then(() => {
-                        console.log("Medication updated successfully!");
+                        return Swal.fire({
+                            title: "Medication Updated!",
+                            icon: "success",
+                            confirmButtonColor: "#4BDEA3",
+                            allowOutsideClick: false,
+                            showConfirmButton: true,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        });
+                    }).then(() => {
                         window.location.href = "medication.html";
                     }).catch(error => {
                         console.error("Error updating medication: ", error);
@@ -43,17 +56,41 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("delete-button").addEventListener("click", deleteMedication);
 
             // Function to delete the medication from Firestore
-            function deleteMedication() {            
-                if (confirm("Are you sure you want to delete?")) {
-                    medicationRef.delete().then(() => {
-                        alert("Medication successfully deleted!");
-                        localStorage.removeItem("selectedMedicationID");
-                        window.location.href = "../pages/medication.html";
-                    }).catch(error => {
-                        console.error("Error deleting medication:", error);
-                    });
-                }
-            }
+            function deleteMedication() {
+                Swal.fire({
+                    title: "Are you sure you want to delete?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#4BDEA3",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, Delete It!",
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        medicationRef.delete().then(() => {
+                            Swal.fire({
+                                title: "Medication Successfully Deleted!",
+                                icon: "success",
+                                confirmButtonColor: "#4BDEA3",
+                                allowOutsideClick: false,
+                                showConfirmButton: false,
+                                timer: 2000,
+                                timerProgressBar: true
+                            }).then(() => {
+                                localStorage.removeItem("selectedMedicationID");
+                                window.location.href = "../pages/medication.html";
+                            });
+                        }).catch(error => {
+                            console.error("Error deleting medication:", error);
+                            Swal.fire({
+                                title: "Error!",
+                                text: "There was an error deleting the medication.",
+                                icon: "error"
+                            });
+                        });
+                    }
+                });
+            }            
         
             // Renders the form with existing medication data on page load
             medicationRef.get()

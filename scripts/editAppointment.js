@@ -76,7 +76,22 @@ function updateAppointment() {
                 doctorId: updatedDoctorId,
                 appointmentTime: appointmentDateTime // Store as Firestore Timestamp
             }).then(() => {
-                alert("Appointment updated!");
+                return Swal.fire({
+                    title: "Appointment Updated!",
+                    icon: "success",
+                    confirmButtonColor: "#4BDEA3",
+                    allowOutsideClick: false,
+                    showConfirmButton: true,
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+            })
+            .then(() => {
+                // alert("Appointment updated!");
                 window.location.href = "../pages/appointment.html";
             }).catch(error => {
                 console.error("Error updating appointment:", error);
