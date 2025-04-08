@@ -34,7 +34,7 @@ function fetchAppointmentDetails() {
                     let data = doc.data();
                     
                     // Setting doctor name
-                    document.getElementById("doctor-name").value = data.doctorName;
+                    document.getElementById("doctor-name").value = data.doctorId;
         
                     // Converting Firestore Timestamp to a JavaScript Date object
                     let appointmentDate = data.appointmentTime.toDate();
@@ -61,15 +61,18 @@ function fetchAppointmentDetails() {
 function updateAppointment() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            let updatedDoctor = document.getElementById("doctor-name").value;
+            let updatedDoctorName = document.getElementById("doctor-name").selectedOptions[0].text;
+            let updatedDoctorId = document.getElementById("doctor-name").value;
             let updatedDate = document.getElementById("appointment-date").value;
             let updatedTime = document.getElementById("appointment-time").value;
         
             // Combine date and time into a single JavaScript Date object
             let appointmentDateTime = new Date(`${updatedDate}T${updatedTime}:00`);
         
-            db.collection("appointment").doc(appointmentID).update({
-                doctorName: updatedDoctor,
+            db.collection("users").doc(user.uid).collection("appointments")
+            .doc(appointmentID).update({
+                doctorName: updatedDoctorName,
+                doctorId: updatedDoctorId,
                 appointmentTime: appointmentDateTime // Store as Firestore Timestamp
             }).then(() => {
                 alert("Appointment updated!");
