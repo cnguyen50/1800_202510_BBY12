@@ -226,14 +226,10 @@ nav {
     color: #3bbd8d;
 }
 
-
 .appointment {
     grid-area: appointment;
-    background: url('placeholder') no-repeat;
-    background-size: 100% 100%;
-    padding: 30px;
-    border-radius: 0 0 20px 20px;
-    min-height: 400px;
+    padding: 50px 30px 30px;
+    position: relative;
 }
 
 .medical-info {
@@ -251,6 +247,12 @@ nav {
     padding: 50px 30px 30px;
     position: relative;
 }
+
+.doctor-list-main {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
 
 .emergency-contact {
     grid-area: emergency;
@@ -362,6 +364,19 @@ nav {
     position: relative;
     display: inline-block;
     padding-bottom: 15px;
+}
+
+.appointment-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('../images/appointment-bg.svg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
 }
 
 .appointment-main-title::after {
