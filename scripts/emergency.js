@@ -40,9 +40,3 @@ function displayAllEmergencyContacts() {
 
 // Call the function to display all contacts
 displayAllEmergencyContacts();
-
-function test() {
-    console.log("testing inside from emergency");
-}
-
-test();

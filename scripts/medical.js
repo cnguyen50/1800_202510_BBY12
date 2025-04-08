@@ -1,3 +1,7 @@
+// Declare global variables to store the image data
+let ImageFile1 = null;
+let ImageFile2 = null;
+
 // ============================
 // Listening for File Select
 // ============================
@@ -47,17 +51,29 @@ function updatePreview(elementId, imageData) {
 // ============
 function saveImages() {
     if (!ImageFile1 || !ImageFile2) {
-        alert("Please upload both images before saving.");
+        Swal.fire({
+            icon: "warning",
+            title: "Images Missing",
+            text: "Please Upload Both Images Before Saving.",
+            allowOutsideClick: false,
+            confirmButtonColor: "#4BDEA3"
+        });
         return;
     }
 
     firebase.auth().onAuthStateChanged(user => {
         if (!user) {
-            alert("You must be signed in to save images.");
+            Swal.fire({
+                icon: "error",
+                title: "Not signed in",
+                text: "You Must Be Signed In To Save Images.",
+                allowOutsideClick: false,
+                confirmButtonColor: "#4BDEA3"
+            });
             return;
         }
 
-        loader.innerHTML = '<div class="spinner-border"></div>';
+        // loader.innerHTML = '<div class="spinner-border"></div>';
         const userImagesRef = db.collection("users").doc(user.uid).collection("images");
 
         userImagesRef.limit(1).get()
@@ -80,10 +96,21 @@ function updateExistingImage(userImagesRef, snapshot) {
         image2: ImageFile2,
         uploadedAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(() => {
-        alert("Images updated successfully!");
-        setTimeout(() => {
-            window.location.href = "/index.html";
-        }, 1000); // 1-second delay before redirection
+        return Swal.fire({
+            title: "Images Updated Successfully!",
+            icon: "success",
+            confirmButtonColor: "#4BDEA3",
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true
+        })
+    }).then(() => {
+        // alert("Images updated successfully!");
+        // setTimeout(() => {
+        //     window.location.href = "/index.html";
+        // }, 1000); // 1-second delay before redirection
+        window.location.href = "/index.html";
     }).catch(error => {
         console.error("Error updating images:", error);
         alert("Error updating images: " + error.message);
@@ -99,7 +126,18 @@ function createNewImage(userImagesRef) {
         image2: ImageFile2,
         uploadedAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(() => {
-        alert("Images saved successfully!");
+        return Swal.fire({
+            title: "Images Added Successfully!",
+            icon: "success",
+            allowOutsideClick: false,
+            confirmButtonColor: "#4BDEA3",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        })
     }).catch(error => {
         console.error("Error saving images:", error);
         alert("Error saving images: " + error.message);
