@@ -63,7 +63,20 @@ function addAppointment(userId) {
         appointmentTime: appointmentDateTime,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(() => {
-        alert("Appointment added!");
+        return Swal.fire({
+            title: "Appointment Added!",
+            icon: "success",
+            confirmButtonColor: "#4BDEA3",
+            allowOutsideClick: false,
+            showConfirmButton: true,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+    }).then(() => {
         window.location.href = "appointment.html";
     }).catch(error => {
         console.error("Error adding appointment:", error);

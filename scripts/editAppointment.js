@@ -104,25 +104,43 @@ function updateAppointment() {
 
 // Function to delete the appointment from Firestore
 function deleteAppointment() {
-    if (confirm("Are you sure you want to delete this appointment?")) {
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                // Get the appointment document reference from the user's subcollection
-                db.collection("users").doc(user.uid).collection("appointments")
-                .doc(localStorage.getItem("selectedAppointmentID"))
-                .delete().then(() => {
-                    alert("Appointment successfully deleted!");
-                    localStorage.removeItem("selectedAppointmentID");
-                    window.location.href = "../pages/appointment.html";
-                }).catch(error => {
-                    console.error("Error deleting appointment:", error);
-                });
-            } else {
-                console.log("User is not signed in.");
-            }
-        });
-    }
-}
+    Swal.fire({
+        title: "Are you sure you want to Delete this Appointment?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#4BDEA3",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Delete It!",
+        allowOutsideClick: false
+    }).then((result) => {
+        if (result.isConfirmed) {
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    db.collection("users").doc(user.uid).collection("appointments")
+                        .doc(localStorage.getItem("selectedAppointmentID"))
+                        .delete().then(() => {
+                            Swal.fire({
+                                title: "Appointment Successfully Deleted!",
+                                icon: "success",
+                                allowOutsideClick: false,
+                                showConfirmButton: false,
+                                timer: 2000,
+                                timerProgressBar: true
+                            }).then(() => {
+                                localStorage.removeItem("selectedAppointmentID");
+                                window.location.href = "../pages/appointment.html";
+                            });
+                        }).catch(error => {
+                            console.error("Error deleting appointment:", error);
+                        });
+                } else {
+                    console.log("User is not signed in.");
+                }
+            });
+        }
+    });
+}         
+
 
 // Initialize page
 fetchDoctors();
