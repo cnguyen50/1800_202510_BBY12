@@ -42,9 +42,10 @@ function fetchAppointmentDetails() {
                     // Setting appointment date (format: YYYY-MM-DD)
                     document.getElementById("appointment-date").value = appointmentDate.toISOString().split('T')[0]; // Get 'YYYY-MM-DD'
         
-                    // Setting appointment time (format: HH:mm)
-                    let appointmentTime = appointmentDate.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
-                    document.getElementById("appointment-time").value = appointmentTime;
+                    // Setting appointment time as HH:mm (using getHours/getMinutes)
+                    let hours = appointmentDate.getHours().toString().padStart(2, '0');
+                    let minutes = appointmentDate.getMinutes().toString().padStart(2, '0');
+                    document.getElementById("appointment-time").value = `${hours}:${minutes}`;
                 } else {
                     console.error("No such appointment!");
                 }
@@ -86,9 +87,34 @@ function updateAppointment() {
     })
 }
 
+// Function to delete the appointment from Firestore
+function deleteAppointment() {
+    if (confirm("Are you sure you want to delete this appointment?")) {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                // Get the appointment document reference from the user's subcollection
+                db.collection("users").doc(user.uid).collection("appointments")
+                .doc(localStorage.getItem("selectedAppointmentID"))
+                .delete().then(() => {
+                    alert("Appointment successfully deleted!");
+                    localStorage.removeItem("selectedAppointmentID");
+                    window.location.href = "../pages/appointment.html";
+                }).catch(error => {
+                    console.error("Error deleting appointment:", error);
+                });
+            } else {
+                console.log("User is not signed in.");
+            }
+        });
+    }
+}
+
 // Initialize page
 fetchDoctors();
 fetchAppointmentDetails();
+
+// Add event listener to the delete button
+document.getElementById("delete-button").addEventListener("click", deleteAppointment);
 
 // Add event listener to save button
 document.getElementById("save-button").onclick = updateAppointment;
