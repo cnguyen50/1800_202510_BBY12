@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Function to delete the doctor from Firestore
             function deleteDoctor() { 
                 Swal.fire({
-                    title: "Are you sure you want to Delete?",
+                    title: "Are You Sure You Want To Delete?",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#4BDEA3",

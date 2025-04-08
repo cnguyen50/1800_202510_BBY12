@@ -109,6 +109,33 @@ function displayDoctorCards() {
         });
 }
 
+// Helper function to create and append a single upcoming appointment card (Simplified)
+function createUpcomingAppointmentCard(appointmentData) {
+    const appointmentListContainer = document.getElementById("appointments-list");
+    let cardTemplate = document.getElementById("appointmentCardTemplate");
+
+    // Basic check upfront: If template or container missing, can't proceed.
+    if (!appointmentListContainer || !cardTemplate) {
+        console.error("Required elements (container or template) not found for upcoming appointments.");
+        return;
+    }
+
+    let newCard = cardTemplate.content.cloneNode(true);
+
+    // Convert Firestore Timestamp to JavaScript Date object
+    let appointmentDate = appointmentData.appointmentTime.toDate();
+
+    // Populate the card elements based on the new template structure
+    newCard.querySelector("#doctor-name").innerText = appointmentData.doctorName || "N/A";
+
+    // Format Date and Time for better display
+    newCard.querySelector("#appointment-date").innerText = appointmentDate.toLocaleDateString([], { month: 'short', day: 'numeric' }); // e.g., "Apr 8"
+    newCard.querySelector("#appointment-time").innerText = appointmentDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); // e.g., "1:14 AM"
+
+
+    appointmentListContainer.appendChild(newCard);
+}
+
 
 function showNoImagesMessage(container) {
     container.innerHTML = `

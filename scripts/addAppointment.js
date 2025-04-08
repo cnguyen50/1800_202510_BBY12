@@ -32,7 +32,7 @@ function fetchDoctors(userId) {
             let doctor = doc.data();
             let option = document.createElement("option");
             option.value = doc.id;
-            option.textContent = doctor.name || "Unnamed Doctor"; // Text displayed is still the name
+            option.textContent = doctor.name || "Unnamed Doctor";
             doctorSelect.appendChild(option);
         });
     }).catch(error => {
@@ -49,7 +49,13 @@ function addAppointment(userId) {
 
     // Basic form validation 
     if (!doctorName || !appointmentDate || !appointmentTime) {
-        alert("Please select a doctor and fill in all fields.");
+        Swal.fire({
+            title: "Error Adding Appointment",
+            text: "Please Fill In All Appointment Fields.",
+            icon: "error",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#4BDEA3"
+        });
         return;
     }
 

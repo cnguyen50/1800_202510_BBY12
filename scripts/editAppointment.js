@@ -91,7 +91,6 @@ function updateAppointment() {
                 });
             })
             .then(() => {
-                // alert("Appointment updated!");
                 window.location.href = "../pages/appointment.html";
             }).catch(error => {
                 console.error("Error updating appointment:", error);
@@ -105,7 +104,7 @@ function updateAppointment() {
 // Function to delete the appointment from Firestore
 function deleteAppointment() {
     Swal.fire({
-        title: "Are you sure you want to Delete this Appointment?",
+        title: "Are You Sure You Want To Delete This Appointment?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#4BDEA3",

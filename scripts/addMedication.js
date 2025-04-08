@@ -16,7 +16,7 @@ function addMedication() {
     if (!medName || !medDose || !medInstructions) {
         Swal.fire({
             title: "Error Adding Medication",
-            text: "Please fill in all medication fields.",
+            text: "Please Fill In All Medication Fields.",
             icon: "error",
             confirmButtonText: "OK",
             confirmButtonColor: "#4BDEA3"

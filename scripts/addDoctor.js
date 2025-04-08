@@ -20,7 +20,7 @@ function addDoctor() {
     if (!docName || !docSpec || !docOffice || !docAddr || !docEmail) {
         Swal.fire({
             title: "Error Adding Doctor",
-            text: "Please fill in all Doctor fields.",
+            text: "Please Fill In All Doctor Fields.",
             icon: "error",
             confirmButtonText: "OK",
             confirmButtonColor: "#4BDEA3"
@@ -58,7 +58,13 @@ function addDoctor() {
                 window.location.href = "../pages/doctorInfo.html"; 
             }).catch(error => {
                 console.error("Error adding doctor: ", error);
-                alert("Error adding doctor. Please try again.");
+                Swal.fire({
+                    title: "Error Adding Doctor",
+                    text: "Please Try Again",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    confirmButtonColor: "#4BDEA3"
+                });
             });
 
         } else {
