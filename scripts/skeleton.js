@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", function () { 
+    // This will work even if the button doesn't exist yet
+    document.body.addEventListener("click", function(e) {
+        if (e.target && e.target.id === 'logout-btn') {
+            logout();
+        }
+    });
+});
+
+function logout() {
+    firebase.auth().signOut().then(() => {
+        console.log("User signed out successfully");
+        window.location.href = "/login.html"; // Redirect to login page
+    }).catch((error) => {
+        console.error("Logout error:", error);
+    });
+}
+
 function loadSkeleton() {
 
     firebase.auth().onAuthStateChanged(function (user) {
