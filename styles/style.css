@@ -293,8 +293,7 @@ nav {
     border-bottom: 1px solid var(--line-clr);
     padding: 1rem 1.5rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
 }
 
 .card-title {
@@ -762,4 +761,23 @@ form img:hover {
 .next-appointment-button-wrapper {
     display: flex;
     justify-content: space-between;
+}
+
+.emger-card-text {
+    font-family: 'FormaDJRBanner', sans-serif;
+    color: var(--text-clr);
+    margin-bottom: 0.8rem;
+}
+
+.index-card-text {
+    font-family: 'FormaDJRBanner', sans-serif;
+    color: var(--text-clr);
+    margin-bottom: 0.8rem;
+}
+
+.index-card-title {
+    font-family: 'FormaDJRBanner', sans-serif;
+    font-weight: bold;
+    color: var(--text-clr);
+    margin-bottom: 1.0rem;
 }
