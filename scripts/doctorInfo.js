@@ -43,9 +43,7 @@ function displayAllDoctors() {
             console.log("No user signed in to display doctors.");
             document.getElementById("doctors-list").innerHTML = '<p>Please log in to see your doctors.</p>';
         }
-    }).catch(error => {
-        console.error("Error fetching doctors:", error);
-    });
+    })
 }
 
 // Call the function to display all doctors

@@ -18,7 +18,13 @@ function addDoctor() {
 
     // Form validation for filled form fields
     if (!docName || !docSpec || !docOffice || !docAddr || !docEmail) {
-        alert("Please fill in all doctor fields.");
+        Swal.fire({
+            title: "Error Adding Doctor",
+            text: "Please fill in all Doctor fields.",
+            icon: "error",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#4BDEA3"
+        });
         return;
     }
 
@@ -35,8 +41,20 @@ function addDoctor() {
                 email: docEmail,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp() 
             }).then(() => {
-                console.log("Doctor successfully added!");
-                alert("Doctor added!");
+                return Swal.fire({
+                    title: "Doctor Added!",
+                    icon: "success",
+                    confirmButtonColor: "#4BDEA3",
+                    allowOutsideClick: false,
+                    showConfirmButton: true,
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+            }).then(() => {
                 window.location.href = "../pages/doctorInfo.html"; 
             }).catch(error => {
                 console.error("Error adding doctor: ", error);

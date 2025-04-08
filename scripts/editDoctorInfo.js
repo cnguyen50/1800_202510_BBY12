@@ -29,7 +29,20 @@ document.addEventListener("DOMContentLoaded", function() {
                     email: doctorEmail,
                     updatedAt: firebase.firestore.FieldValue.serverTimestamp() 
                 }).then(() => {
-                    console.log("Doctor information updated successfully!");
+                    return Swal.fire({
+                        title: "Doctor Updated!",
+                        icon: "success",
+                        confirmButtonColor: "#4BDEA3",
+                        allowOutsideClick: false,
+                        showConfirmButton: true,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    });
+                }).then(() => {
                     window.location.href = "doctorInfo.html";
                 }).catch(error => {
                     console.error("Error updating doctor information: ", error);
@@ -43,16 +56,40 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("delete-button").addEventListener("click", deleteDoctor);
 
             // Function to delete the doctor from Firestore
-            function deleteDoctor() {            
-                if (confirm("Are you sure you want to delete?")) {
-                    doctorRef.delete().then(() => {
-                        alert("Doctor successfully deleted!");
-                        localStorage.removeItem("selectedDoctorID");
-                        window.location.href = "../pages/doctorInfo.html";
-                    }).catch(error => {
-                        console.error("Error deleting doctor:", error);
-                    });
-                }
+            function deleteDoctor() { 
+                Swal.fire({
+                    title: "Are you sure you want to Delete?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#4BDEA3",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, Delete It!",
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        doctorRef.delete().then(() => {
+                            Swal.fire({
+                                title: "Doctor Successfully Deleted!",
+                                icon: "success",
+                                confirmButtonColor: "#4BDEA3",
+                                allowOutsideClick: false,
+                                showConfirmButton: false,
+                                timer: 2000,
+                                timerProgressBar: true
+                            }).then(() => {
+                                localStorage.removeItem("selectedDoctorID");
+                                window.location.href = "../pages/doctorInfo.html";
+                            });
+                        }).catch(error => {
+                            console.error("Error deleting doctor:", error);
+                            Swal.fire({
+                                title: "Error!",
+                                text: "There was an error deleting the doctor.",
+                                icon: "error"
+                            });
+                        });
+                    }
+                });
             }
 
             // Renders the form with existing doctor data on page load
