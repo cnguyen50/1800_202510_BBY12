@@ -725,3 +725,39 @@ form img:hover {
         font-size: 1.5rem;
     }
 }
+
+/* Style for each appointment card */
+.appointment-card {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+  /* Inline layout */
+.appointment-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.appointment-doctor {
+    font-size: 1.1rem;
+}
+
+.appointment-date,
+.appointment-time {
+    font-size: 1rem;
+    color: #555;
+}
+
+
+.appointment-card {
+    padding: 1.5rem;
+}
+
+.next-appointment-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+}

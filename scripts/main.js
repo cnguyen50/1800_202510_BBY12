@@ -1,7 +1,9 @@
 // Call the function when the page loads (or after user login)
 window.addEventListener('DOMContentLoaded', () => {
     firebase.auth().onAuthStateChanged(user => {
-        if (user) displayDoctorCards();
+        if (user) 
+        displayDoctorCards();
+        displayUpcomingAppointments();
     });
 });
 
@@ -109,32 +111,48 @@ function displayDoctorCards() {
         });
 }
 
-// Helper function to create and append a single upcoming appointment card (Simplified)
-function createUpcomingAppointmentCard(appointmentData) {
-    const appointmentListContainer = document.getElementById("appointments-list");
-    let cardTemplate = document.getElementById("appointmentCardTemplate");
 
-    // Basic check upfront: If template or container missing, can't proceed.
-    if (!appointmentListContainer || !cardTemplate) {
-        console.error("Required elements (container or template) not found for upcoming appointments.");
-        return;
+function displayUpcomingAppointments() {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            db.collection("users").doc(user.uid).collection("appointments")
+                .where("appointmentTime", ">=", new Date())
+                .orderBy("appointmentTime", "asc")
+                .limit(4)
+                .get()
+                .then(snapshot => {
+                    const container = document.getElementById("appointments-list");
+                    container.innerHTML = ""; 
+                    const template = document.getElementById("appointmentCardTemplate");
+                    
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        const appointmentDate = data.appointmentTime.toDate();
+
+                        // Format date and time
+                        const formattedDate = appointmentDate.toLocaleDateString([], { month: 'long', day: 'numeric', year: 'numeric'});
+                        const formattedTime = appointmentDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+
+                        // Clone the template content
+                        let cardClone = template.content.cloneNode(true);
+
+                        // Fill in the text content
+                        cardClone.querySelector(".appointment-doctor").innerText = data.doctorName || "No Doctor Assigned";
+                        cardClone.querySelector(".appointment-date").innerText = formattedDate;
+                        cardClone.querySelector(".appointment-time").innerText = formattedTime;
+                        
+                        // Append the cloned node to the container
+                        container.appendChild(cardClone);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching upcoming appointments:", error);
+                });
+        } else {
+            console.log("User not signed in to fetch upcoming appointments.");
+        }    
     }
-
-    let newCard = cardTemplate.content.cloneNode(true);
-
-    // Convert Firestore Timestamp to JavaScript Date object
-    let appointmentDate = appointmentData.appointmentTime.toDate();
-
-    // Populate the card elements based on the new template structure
-    newCard.querySelector("#doctor-name").innerText = appointmentData.doctorName || "N/A";
-
-    // Format Date and Time for better display
-    newCard.querySelector("#appointment-date").innerText = appointmentDate.toLocaleDateString([], { month: 'short', day: 'numeric' }); // e.g., "Apr 8"
-    newCard.querySelector("#appointment-time").innerText = appointmentDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); // e.g., "1:14 AM"
-
-
-    appointmentListContainer.appendChild(newCard);
-}
+)}
 
 
 function showNoImagesMessage(container) {
