@@ -112,16 +112,18 @@ function displayDoctorCards() {
 
 function showNoImagesMessage(container) {
     container.innerHTML = `
-        <div class="carousel-item active text-center py-5">
-            <p class="text-muted">No medical documents found</p>
+        <div id="carousel-empty" class="text-center py-5">
+            <i class="bi bi-images" style="font-size: 3rem; color: var(--line-clr);"></i>
+            <p class="mt-3">No medical images uploaded yet</p>
         </div>
     `;
 }
 
 function showErrorMessage(container) {
     container.innerHTML = `
-        <div class="carousel-item active text-center py-5">
-            <p class="text-danger">Error loading images</p>
+        <div id="carousel-empty" class="text-center py-5">
+            <i class="bi bi-images" style="font-size: 3rem; color: var(--line-clr);"></i>
+            <p class="mt-3">No medical images uploaded yet</p>
         </div>
     `;
 }

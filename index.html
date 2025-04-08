@@ -41,7 +41,7 @@
 
 </head>
 
-<body>
+<body class="main-page">
     <!-- Loading page -->
     <div id="loading-screen">
         <div class="loading-content">
@@ -115,7 +115,7 @@
     <div class="container mt-4">
         <!-- Welcome Message -->
         <div class="welcome text-center p-4">
-            <h1>Welcome to Your Medical Center</h1>
+            <h1>Welcome to Your <span class="green-text">Medical Center</span></h1>
         </div>
 
         <!-- Appointment Section -->
@@ -128,8 +128,12 @@
 
         <!-- Medical Information -->
         <div class="medical-info p-4 shadow rounded">
-            <a href="/pages/uploadMedicalCards.html" class="btn custom-btn mt-2">Upload</a>
-            <div class="container py-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <a href="/pages/uploadMedicalCards.html" class="btn custom-btn-white">
+                    <i class="bi bi-cloud-arrow-up me-2"></i> Upload
+                </a>
+            </div>
+            <div class="medical-carousel-container py-3">
                 <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" id="carousel-inner">
                 </div>
@@ -155,7 +159,7 @@
         </div>
 
         <!-- Emergency Contact -->
-        <div class="emergency-contact p-4 shadow rounded text-center">
+        <div class="emergency-contact card p-4 text-center">
             <h2>Emergency Contact</h2>
             <div id="contacts-list"></div>
         </div>

@@ -32,30 +32,21 @@ body {
     min-height: 100vh;
     background-color: #fff;
     background-image: 
-      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px), 
-      url('../images/doctor-bg-main.svg');
-      background-size: 20px 20px, 20px 20px, cover; /* Grid pattern and SVG overlay */
-      background-position: top left, top left, center center; 
-      background-repeat: repeat, repeat, no-repeat; /* Repeat grid and not SVG */
+        linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px, 20px 20px;
+    background-position: top left, top left;
+    background-repeat: repeat, repeat;
 }
-  
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: linear-gradient(
-      to bottom,
-      white 0%,
-      rgba(255, 255, 255, 0) 10%,
-      rgba(255, 255, 255, 0) 90%,
-      white 100%
-    );
-    z-index: 1;
+
+.main-page {
+    background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px), 
+        url('../images/doctor-bg-main.svg');
+    background-size: 20px 20px, 20px 20px, cover;
+    background-position: top left, top left, center center;
+    background-repeat: repeat, repeat, no-repeat;
 }
   
 /* Loading Screen */
@@ -231,6 +222,11 @@ nav {
     margin: 0;
 }
 
+.green-text {
+    color: #3bbd8d;
+}
+
+
 .appointment {
     grid-area: appointment;
     background: url('placeholder') no-repeat;
@@ -243,6 +239,8 @@ nav {
 .medical-info {
     grid-area: medical;
     min-height: 200px;
+    display: flex;
+    flex-direction: column;
 }
 
 .doctor-info {
@@ -259,6 +257,10 @@ nav {
     background: url('placeholder') no-repeat;
     background-size: 100% 100%;
     padding: 40px 30px 30px;
+}
+
+#contact-name {
+    text-decoration: none;
 }
 
 /* Cards */
@@ -349,6 +351,34 @@ nav {
     font-weight: bold;
     color: var(--text-clr);
     font-size: 1.1rem;
+}
+
+/* Appointment */
+.appointment-main-title {
+    font-family: 'FormaDJRBanner', sans-serif;
+    font-weight: bold;
+    color: var(--text-clr);
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.appointment-main-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-btn);
+}
+
+.appointment-subtitle {
+    color: var(--line-clr);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
 }
 
 /* Medication */
@@ -585,11 +615,18 @@ form img:hover {
     border: 2px solid black;
     background: transparent;
     border-radius: 25px;
-    padding: 12px 24px;
+    padding: 8px 16px;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
     color: black;
+}
+
+.custom-btn-white:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: black;
+    transform: translateY(-1px);
+    box-shadow: 0px 6px 15px var(--btn-shadow);
 }
 
 /* Footer: increase size for social media icons */
