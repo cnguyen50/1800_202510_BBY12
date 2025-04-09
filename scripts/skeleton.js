@@ -7,6 +7,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function insertNameFromFirestore() {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            const userDoc = db.collection("users").doc(user.uid);
+            // Get the document data
+            userDoc.get().then(doc => {
+                if (doc.exists) {
+                    const user_Name = doc.data().name;
+                    // console.log("User name:", user_Name);
+                    // Corrected the method name and property
+                    document.getElementById("name-goes-here").innerText = user_Name;
+                } else {
+                    console.log("No user document found!");
+                }
+            }).catch(error => {
+                console.error("Error getting user document:", error);
+            });
+        } else {
+            console.log("No user is signed in");
+        }
+    });
+}
+insertNameFromFirestore();
+
 function logout() {
     firebase.auth().signOut().then(() => {
         console.log("User signed out successfully");
