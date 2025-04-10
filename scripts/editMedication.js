@@ -1,13 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     let medicationID = localStorage.getItem("selectedMedicationID");
-
     if (!medicationID) {
         console.error("No medication selected!");
         return; 
     }
-
-    // console.log(medicationID);
-
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             const userDocRef = db.collection("users").doc(user.uid);
@@ -17,10 +13,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 let medicationName = document.getElementById("medication-name").value;
                 let medicationDose = document.getElementById("medication-dose").value;
                 let medicationInstructions = document.getElementById("medication-instructions").value;
-        
-                // console.log(medicationName, medicationDose, medicationInstructions);
-        
-                    // Update the medication document with the new data
                     medicationRef.update({
                         name: medicationName,
                         dose: medicationDose,
@@ -48,14 +40,8 @@ document.addEventListener("DOMContentLoaded", function() {
         
         
             }
-        
-            // Add event listener to save button
             document.getElementById("save-button").addEventListener("click", saveMedication);
-
-            // Add event listener to delete button
             document.getElementById("delete-button").addEventListener("click", deleteMedication);
-
-            // Function to delete the medication from Firestore
             function deleteMedication() {
                 Swal.fire({
                     title: "Are You Sure You Want To Delete?",
@@ -91,13 +77,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
             }            
-        
-            // Renders the form with existing medication data on page load
             medicationRef.get()
                 .then(doc => {
                     if (doc.exists) {
                         let medicationData = doc.data();
-                        // Set the input fields to the medication's current information
                         document.getElementById("medication-name").value = medicationData.name;
                         document.getElementById("medication-dose").value = medicationData.dose;
                         document.getElementById("medication-instructions").value = medicationData.instructions;
@@ -106,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 })
                 .catch(error => console.error("Error fetching medication data:", error));
-
         } else {
             console.log("No user is signed in");
             window.location.href = '/login.html';

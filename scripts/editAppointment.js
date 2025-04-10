@@ -1,6 +1,5 @@
 let appointmentID = localStorage.getItem("selectedAppointmentID");
 
-// Fetch all doctors for dropdown
 function fetchDoctors() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -23,26 +22,16 @@ function fetchDoctors() {
     });
 }
 
-// Fetch details of the selected appointment
 function fetchAppointmentDetails() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             db.collection("users").doc(user.uid).collection("appointments").doc(appointmentID)
-            // db.collection("appointment").doc(appointmentID)
             .get().then(doc => {
                 if (doc.exists) {
                     let data = doc.data();
-                    
-                    // Setting doctor name
                     document.getElementById("doctor-name").value = data.doctorId;
-        
-                    // Converting Firestore Timestamp to a JavaScript Date object
                     let appointmentDate = data.appointmentTime.toDate();
-        
-                    // Setting appointment date (format: YYYY-MM-DD)
                     document.getElementById("appointment-date").value = appointmentDate.toISOString().split('T')[0]; // Get 'YYYY-MM-DD'
-        
-                    // Setting appointment time as HH:mm (using getHours/getMinutes)
                     let hours = appointmentDate.getHours().toString().padStart(2, '0');
                     let minutes = appointmentDate.getMinutes().toString().padStart(2, '0');
                     document.getElementById("appointment-time").value = `${hours}:${minutes}`;
@@ -58,7 +47,6 @@ function fetchAppointmentDetails() {
     })
 }
 
-// Update appointment details in Firestore
 function updateAppointment() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -66,15 +54,12 @@ function updateAppointment() {
             let updatedDoctorId = document.getElementById("doctor-name").value;
             let updatedDate = document.getElementById("appointment-date").value;
             let updatedTime = document.getElementById("appointment-time").value;
-        
-            // Combine date and time into a single JavaScript Date object
             let appointmentDateTime = new Date(`${updatedDate}T${updatedTime}:00`);
-        
             db.collection("users").doc(user.uid).collection("appointments")
             .doc(appointmentID).update({
                 doctorName: updatedDoctorName,
                 doctorId: updatedDoctorId,
-                appointmentTime: appointmentDateTime // Store as Firestore Timestamp
+                appointmentTime: appointmentDateTime
             }).then(() => {
                 return Swal.fire({
                     title: "Appointment Updated!",
@@ -101,7 +86,6 @@ function updateAppointment() {
     })
 }
 
-// Function to delete the appointment from Firestore
 function deleteAppointment() {
     Swal.fire({
         title: "Are You Sure You Want To Delete This Appointment?",
@@ -140,13 +124,8 @@ function deleteAppointment() {
     });
 }         
 
-
-// Initialize page
 fetchDoctors();
 fetchAppointmentDetails();
 
-// Add event listener to the delete button
 document.getElementById("delete-button").addEventListener("click", deleteAppointment);
-
-// Add event listener to save button
 document.getElementById("save-button").onclick = updateAppointment;

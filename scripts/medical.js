@@ -2,29 +2,23 @@
 let ImageFile1 = null;
 let ImageFile2 = null;
 
-// ============================
 // Listening for File Select
-// ============================
 function listenFileSelect() {
     document.getElementById("mypic-input1").addEventListener('change', handleFileUpload);
     document.getElementById("mypic-input2").addEventListener('change', handleFileUpload);
 }
 listenFileSelect();
 
-// ======================
 // File Upload Handling
-// ======================
 function handleFileUpload(e) {
     const file = e.target.files[0];
     if (!file) return;
 
     const inputId = e.target.id; // Store input ID before reader runs
     const reader = new FileReader();
-
     reader.onload = function(e) {
         const base64Data = e.target.result.split(',')[1];
         const previewId = inputId.replace('input', 'goes-here'); // Use stored input ID
-        
         // Store in correct variable and update preview
         if (inputId.includes('1')) {
             ImageFile1 = base64Data;
@@ -36,9 +30,7 @@ function handleFileUpload(e) {
     reader.readAsDataURL(file);
 }
 
-// ======================
 // Display image preview
-// ======================
 function updatePreview(elementId, imageData) {
     const element = document.getElementById(elementId);
     if (element) {
@@ -46,9 +38,7 @@ function updatePreview(elementId, imageData) {
     }
 }
 
-// ============
 // Save images
-// ============
 function saveImages() {
     if (!ImageFile1 || !ImageFile2) {
         Swal.fire({
@@ -60,7 +50,6 @@ function saveImages() {
         });
         return;
     }
-
     firebase.auth().onAuthStateChanged(user => {
         if (!user) {
             Swal.fire({
@@ -72,8 +61,6 @@ function saveImages() {
             });
             return;
         }
-
-        // loader.innerHTML = '<div class="spinner-border"></div>';
         const userImagesRef = db.collection("users").doc(user.uid).collection("images");
 
         userImagesRef.limit(1).get()
@@ -86,9 +73,7 @@ function saveImages() {
     });
 }
 
-// ========================
 // Update images for user
-// ========================
 function updateExistingImage(userImagesRef, snapshot) {
     const docId = snapshot.docs[0].id;
     userImagesRef.doc(docId).update({
@@ -113,9 +98,7 @@ function updateExistingImage(userImagesRef, snapshot) {
     });
 }
 
-// ============================
 // Listening for File Select
-// ============================
 function createNewImage(userImagesRef) {
     userImagesRef.add({
         image1: ImageFile1,

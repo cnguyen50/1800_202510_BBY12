@@ -25,7 +25,6 @@ function fetchDoctors(userId) {
         console.error("Error: doctor-name select element not found!");
         return;
     }
-
     // Fetch from the user's doctors subcollection
     db.collection("users").doc(userId).collection("doctors").get().then(snapshot => {
         snapshot.forEach(doc => {
@@ -46,7 +45,6 @@ function addAppointment(userId) {
     let doctorId = document.getElementById("doctor-name").value;
     let appointmentDate = document.getElementById("appointment-date").value;
     let appointmentTime = document.getElementById("appointment-time").value;
-
     // Basic form validation 
     if (!doctorName || !appointmentDate || !appointmentTime) {
         Swal.fire({
@@ -58,10 +56,8 @@ function addAppointment(userId) {
         });
         return;
     }
-
     // Combine date and time into a JavaScript Date object
     let appointmentDateTime = new Date(`${appointmentDate}T${appointmentTime}:00`);
-
     // Store appointment in the user's appointments subcollection
     db.collection("users").doc(userId).collection("appointments").add({
         doctorName: doctorName,

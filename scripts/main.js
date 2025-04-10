@@ -1,4 +1,3 @@
-// Call the function when the page loads (or after user login)
 window.addEventListener('DOMContentLoaded', () => {
     firebase.auth().onAuthStateChanged(user => {
         if (user) 
@@ -9,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // Redirect immediately if not logged in
 firebase.auth().onAuthStateChanged((user) => {
-    const allowedPages = ["login.html"]; // Public pages
+    const allowedPages = ["login.html"];
     const currentPage = window.location.pathname.split("/").pop(); // Gets "medication.html"
 
     if (!user && !allowedPages.includes(currentPage)) {
@@ -17,16 +16,12 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
-// ======================
 // Global Variables
-// ======================
 let ImageFile1, ImageFile2;
 const carouselTemplate = document.getElementById("carouselItemTemplate");
 let carouselInstance = null; // To store carousel instance
 
-// ======================
 // Display Images (Carousel)
-// ======================
 function displayImagesFromFirestore() {
     const carouselInner = document.getElementById('carousel-inner');
     carouselInner.innerHTML = '<div class="carousel-item active text-center py-5"><div class="spinner-border"></div></div>';
@@ -86,12 +81,9 @@ function addCarouselItem(container, imageData, isActive) {
 }
 
 function initCarousel() {
-    // Destroy previous instance if exists
     if (carouselInstance) {
         carouselInstance.dispose();
     }
-    
-    // Initialize with native Bootstrap 5
     carouselInstance = new bootstrap.Carousel(document.getElementById('imageCarousel'), {
         ride: 'carousel'
     });
@@ -100,16 +92,13 @@ function initCarousel() {
 function displayDoctorCards() {
     const user = firebase.auth().currentUser;
     if (!user) return;
-
     db.collection("users").doc(user.uid).collection("doctors").get()
         .then(snapshot => {
             const container = document.getElementById("doctors-list");
-            container.innerHTML = ""; // Clear previous results
-            
+            container.innerHTML = ""; 
             snapshot.forEach(doc => {
                 const doctor = doc.data();
                 const card = document.getElementById("doctorCardTemplate").content.cloneNode(true);
-                
                 card.querySelector("#doctor-name").textContent = doctor.name;
                 card.querySelector("#doctor-specialization").textContent = `Specialization: ${doctor.specialization}`;
                 card.querySelector("#doctor-office").textContent = `Office: ${doctor.office}`;
@@ -134,24 +123,15 @@ function displayUpcomingAppointments() {
                     const container = document.getElementById("appointments-list");
                     container.innerHTML = ""; 
                     const template = document.getElementById("appointmentCardTemplate");
-                    
                     snapshot.forEach(doc => {
                         const data = doc.data();
                         const appointmentDate = data.appointmentTime.toDate();
-
-                        // Format date and time
                         const formattedDate = appointmentDate.toLocaleDateString([], { month: 'long', day: 'numeric', year: 'numeric'});
                         const formattedTime = appointmentDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-
-                        // Clone the template content
                         let cardClone = template.content.cloneNode(true);
-
-                        // Fill in the text content
                         cardClone.querySelector(".appointment-doctor").innerText = data.doctorName || "No Doctor Assigned";
                         cardClone.querySelector(".appointment-date").innerText = formattedDate;
                         cardClone.querySelector(".appointment-time").innerText = formattedTime;
-                        
-                        // Append the cloned node to the container
                         container.appendChild(cardClone);
                     });
                 })

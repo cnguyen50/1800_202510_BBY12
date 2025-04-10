@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (doc.exists) {
                     let emergencyData = doc.data();
                     console.log("Emergency contact data:", emergencyData);
-
-                    // Populate fields if they exist
                     [
                         { id: "contact-name", key: "Name" },
                         { id: "contact-relationship", key: "Relationship" },
@@ -38,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-// Function to save the edited emergency contact information
+
 function saveEmergencyInfo() {
     let emergencyID = localStorage.getItem("selectedEmergencyID");
     if (!emergencyID) {
@@ -63,7 +61,6 @@ function saveEmergencyInfo() {
             .then(() => {
                 console.log("Emergency contact information updated successfully!");
                 window.location.href = "/index.html";
-                // Optionally redirect or give feedback to the user
             })
             .catch(error => console.error("Error updating emergency contact information: ", error));
     } else {
@@ -72,7 +69,6 @@ function saveEmergencyInfo() {
     }
 }
 
-// Add event listener to save button
 const saveButton = document.getElementById("save-button");
 if (saveButton) {
     saveButton.addEventListener("click", saveEmergencyInfo);

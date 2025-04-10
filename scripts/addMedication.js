@@ -23,13 +23,11 @@ function addMedication() {
         });
         return;
     }
-
     // Get the current user
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             // User is signed in, proceed to add the medication
             // console.log("Adding medication for user:", user.uid);
-
             db.collection("users").doc(user.uid).collection("medications").add({
                 name: medName,
                 dose: medDose,
@@ -61,7 +59,6 @@ function addMedication() {
                     confirmButtonColor: "#4BDEA3"
                 });
             });
-
         } else {
             console.log("No user signed in to add medication.");
 

@@ -1,4 +1,3 @@
-// Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 var uiConfig = {
@@ -34,11 +33,5 @@ var uiConfig = {
     tosUrl: '<your-tos-url>',
     privacyPolicyUrl: '<your-privacy-policy-url>'
 };
-
-//Only initialize FirebaseUI if the container exists
-// if (document.getElementById("firebaseui-auth-container")) {
-// } else {
-//     console.log("FirebaseUI not initialized - No auth container found.");
-// }
 
 ui.start("#firebaseui-auth-container", uiConfig);

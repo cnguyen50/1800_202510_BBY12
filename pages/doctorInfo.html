@@ -31,9 +31,10 @@
 </head>
 
 <body>
-    <!-- Doctor Card Template for Listing -->
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
     <div class="doctor-bg"></div>
-    <!-- Navigation Bar -->
     <nav id="navbarPlaceholder"></nav>
     <main class="flex-grow-1 container py-4 position-relative">
         <div class="text-center">
@@ -51,7 +52,6 @@
                 </div>
             </div>
         </template>
-        <!-- Section for Single Doctor Details (if docID exists) -->
         <div id="single-doctor-info">
             <div class="doctor-card-header">
                 <h2 id="doctor-name"></h2>
@@ -61,17 +61,13 @@
             <p id="doctor-address"></p>
             <a id="doctor-email"></a>
         </div>
-        
-        <!-- Section for Listing All Doctors (if no docID is provided) -->
         <div id="doctors-list"></div>
         <div class="text-center m-4"> 
             <a href="addDoctor.html" class="btn custom-btn">Add New Doctor</a>
         </div>
     </main>
-    <!-- Footer -->
     <footer id="footerPlaceholder" class="mt-auto"></footer>
 
-    <!-- JavaScript Scripts -->
     <script src="../scripts/firebaseAPI_Team12.js"></script>
     <script src="../scripts/script.js"></script>
     <script src="../scripts/skeleton.js"></script>

@@ -4,7 +4,6 @@
 ## Overview
 Summarize your project's purpose, problem solved, key features, user benefits, development context, and main technologies used.
 
-Example:
 
 This client-side JavaScript web application provides real-time weather updates for cities worldwide. It simplifies accessing weather information through an intuitive mobile-first interface, allowing users to input a city name and receive data on temperature, humidity, and conditions.
 
@@ -23,7 +22,6 @@ Example:
 
 ## Technologies Used
 
-Example:
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Firebase for hosting
 - **Database**: Firestore
@@ -33,7 +31,6 @@ Example:
 
 ## Usage
 
-Example:
 1. Open your browser and visit `http://localhost:3000`.
 2. Enter the name of the city in the search bar and press enter.
 3. View the weather information displayed on the screen.
