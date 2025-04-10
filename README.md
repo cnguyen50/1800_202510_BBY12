@@ -2,52 +2,66 @@
 # Project Name
 
 ## Overview
-Summarize your project's purpose, problem solved, key features, user benefits, development context, and main technologies used.
 
+Managing medical information can be challenging, particularly for the elderly and their caregivers. HealthHub, a client-side JavaScript web application, helps manage medication details, doctor contact information, appointments, and emergency contacts. The goal is to make the task of tracking important health information simple through a single app with a clean and intuitive user interface. 
 
-This client-side JavaScript web application provides real-time weather updates for cities worldwide. It simplifies accessing weather information through an intuitive mobile-first interface, allowing users to input a city name and receive data on temperature, humidity, and conditions.
-
-Developed for the [Course Name] course, applying User-Centred Design practices, agile project management processes, integrating a weather API, and Firebase backend services.
+Developed for the COMP1800 course, applying User-Centred Design practices, agile project management processes, and Firebase backend services.
 
 ---
 
 ## Features
 
-Example:
-- Real-time weather updates for any city.
+- A dashboard with quick access to emergency contacts, doctor appointments, medication details and medical service cards, allowing care receivers to quickly find important health information when needed.
 - Responsive design for desktop and mobile.
-- Displays temperature, humidity, and weather conditions.
+- Individual pages to display and add/edit medical information.
 
 ---
 
 ## Technologies Used
 
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Firebase for hosting
+- **Frontend**: HTML, CSS, Bootstrap 5, JavaScript
+- **Backend**: Firebase (Hosting, Authentication)
 - **Database**: Firestore
-- **API**: OpenWeatherMap API
+- **API**: Firebase SDK APIs
 
 ---
 
 ## Usage
 
-1. Open your browser and visit `http://localhost:3000`.
-2. Enter the name of the city in the search bar and press enter.
-3. View the weather information displayed on the screen.
+1. Visit the deployed app: `https://bby12-a52bd.web.app/`.
+2. Click the HealthHub logo (top-left) to log in
+3. Use these test credentials: 
+     - Email: `demo01@gmail.com`
+     - Password: `demo01`
+4. Explore these features:
+     - View medical information dashboard
+     - Manage emergency contacts
+     - Add/edit appointments
+     - Add/edit doctors
+     - Add/edit medications
+     - Upload medical documents
+
+### Important Notes
+- This is a **demo account** with sample data
+- Do not enter real personal health information
 
 ---
 
 ## Project Structure
 
-Example:
 ```
-project-name/
-├── src/
-│   ├── index.html
-│   ├── style.css
-│   ├── app.js
-│   └── components/
-├── package.json
+1800_202510_BBY12/
+├── fonts/
+├── images/
+├── pages/
+├── scripts/
+│   ├── main.js
+│   ├── authentication.js
+│   ├── firebaseAPI_Team12.js
+├── styles/
+├── text/
+├── firebase.json
+│── index.html
 ├── README.md
 └── .gitignore
 ```
@@ -57,38 +71,33 @@ project-name/
 ## Contributors
 - **Calvin Nguyen** - BCIT CST Student that loves food!!!!!!!
 - **Leen Seydoun** - BCIT Student that loves cats! Has one cat at home
-- **Veronica Sheng** - BCIT CST Student with a passion for creating inclusive applications. Fun fact: Loves traveling!!!! 
+- **Veronica Sheng** - BCIT CST Student that loves traveling!!!! 
 
 ---
 
 ## Acknowledgments
 
-Example:
-- Weather data sourced from [OpenWeatherMap](https://openweathermap.org/).
-- Code snippets for ___ algoirthm were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
-- Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+- [Bootstrap](https://getbootstrap.com/) for front-end design
+- [Firebase Documentation](https://firebase.google.com/docs) for backend implementation
+- Our COMP1800 instructor for project feedback and support
 
 ---
 
 ## Limitations and Future Work
 ### Limitations
 
-Example:
-- Currently, the app only supports city-based weather searches.
-- Limited to basic weather parameters like temperature, humidity, and conditions.
-- The user interface can be further enhanced for accessibility.
+- Currently, the app only supports viewing existing emergency contacts for the test account (no add/edit functionality).
+- Appointment management lacks reminders and calendar integration.
 
 ### Future Work
 
-Example: 
-- Add support for location-based weather detection using GPS.
-- Implement additional weather parameters like wind speed and UV index.
-- Create a dark mode for better usability in low-light conditions.
-- Integrate user accounts for saving favorite locations.
+- Enhanced Contacts: add/edit/delete emergency contacts.
+- Push notifications for upcoming appointments and medications.
+- Interactive calendar view with drag-and-drop scheduling.
+- PDF export functionality for sharing with providers. 
 
 ---
 
 ## License
 
-Example:
 This project is licensed under the MIT License. See the LICENSE file for details.
