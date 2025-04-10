@@ -1,8 +1,5 @@
 {
   "projects": {
-    "default": "bby12-a52bd",
-    "defaullt": "bby12-a52bd"
-  },
-  "targets": {},
-  "etags": {}
+    "default": "bby12-a52bd"
+  }
 }

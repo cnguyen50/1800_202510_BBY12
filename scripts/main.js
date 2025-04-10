@@ -7,14 +7,14 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // Redirect immediately if not logged in
-firebase.auth().onAuthStateChanged((user) => {
-    const allowedPages = ["login.html"];
-    const currentPage = window.location.pathname.split("/").pop(); // Gets "medication.html"
+// firebase.auth().onAuthStateChanged((user) => {
+//     const allowedPages = ["login.html"]; // Public pages
+//     const currentPage = window.location.pathname.split("/").pop(); // Gets "medication.html"
 
-    if (!user && !allowedPages.includes(currentPage)) {
-        window.location.replace("/login.html"); // Hard redirect (no back button)
-    }
-});
+//     if (!user && !allowedPages.includes(currentPage)) {
+//         window.location.replace("/login.html"); // Hard redirect (no back button)
+//     }
+// });
 
 // Global Variables
 let ImageFile1, ImageFile2;
